@@ -1,0 +1,33 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <center><img src = "/assets/css/StudyBuddy.png"></center>
+  </div>
+</div>
+<div class="container first">
+      <div class="row">
+        <div class="col-sm-12">
+			<form id="profileForm">
+          		<div class="form-group">
+					<h1>Study Info</h1>
+					<label for="team">Detail about yourself</label>
+					<textarea placeholder="A little something about myself...." class="form-control" rows="3" id="team"></textarea>
+           			<div class="form-group">
+					<label for="sports">My skill level  </label>
+					<select class="custom-select" id="sports">
+                		<option value="low">Low</option>
+                		<option value="novice">Novice</option>
+                		<option value="amateur">Amateur</option>
+						<option value ="expert">Expert</option>
+  					</select>
+              		<label for="location">Location</label>
+					<textarea placeholder="My current location:" class="form-control" rows="3" id="location"></textarea>
+					</div>	
+					<button type="submit" class="btn btn-success submit">Submit</button>
+				</div>
+			</form>
+			<button type="delete" class="btn btn-danger delete">Delete Profile</button>
+        </div>
+      </div>  
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/profileInfo.js"></script>
