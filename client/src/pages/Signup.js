@@ -1,35 +1,49 @@
 import React, { useState } from "react";
 import API from "../utils/API"
+import { Link } from "react-router-dom";
+import { Container, Row, Col, Input, Button } from 'reactstrap';
 
 function Register() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   
-  const register = () => {
-    console.log(registerUsername)
-    console.log(registerPassword)
-      API.register({
+  const register = async () => {
+    try {
+      const res =  await API.register({
         username: registerUsername,
         password: registerPassword,
-      }).then((res) => console.log(res));
-    
-  };
+      })
+        if (!res.data._id ){
+          console.log(res)
+        } else {
+        window.location.href = "/member/"+res.data._id;
+        }
+      } catch (error) {
+        console.log(
+          "There was an error processing your results, please try again",
+          error
+        );
+      }
+    };
 
   return (
-    <div className="App">
-      <div>
+    <Container>
+      <Row>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
         <h1>Register</h1>
-        <input
+        <Input
           placeholder="username"
           onChange={(e) => setRegisterUsername(e.target.value)}
         />
-        <input
+        <Input
           placeholder="password"
           onChange={(e) => setRegisterPassword(e.target.value)}
         />
-        <button onClick={register}>Submit</button>
-      </div>
-    </div>
+        <Button onClick={register}>Register</Button>
+        <Link to={"/login"}><Button className="float-right">Login</Button></Link>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

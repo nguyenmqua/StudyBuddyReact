@@ -15,14 +15,8 @@ module.exports = {
           password: hashedPassword,
         });
         await newUser.save();
-        res.send("User Created");
+        res.redirect(307, "/api/login");
       }
     })
-    .then(function() {
-      res.redirect(307, "/api/login");
-    })
-      .catch(function(err) {
-        res.status(401).json(err);
-    });
   },
 };
