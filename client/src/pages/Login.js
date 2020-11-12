@@ -1,30 +1,43 @@
 import React, { useState } from "react";
 import API from "../utils/API"
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Container, Row, Col, Input, Button } from 'reactstrap';
+import { useAuth } from "../context/auth";
 
-function Login() {
+function Login(props) {
   const [loginUsername, setloginUsername] = useState("");
   const [loginPassword, setloginPassword] = useState("");
-  
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const { setAuthTokens } = useAuth();
+ 
+
+  if (isLoggedIn) {
+    return <Redirect to= "/newsfeed" />;
+  }
+
   const loginButton = async () => {
-    try {
-        const res =  await API.login({
+      API.login({
           username: loginUsername,
           password: loginPassword,
         })
-          if (!res.data._id ){
-            alert("Invalid Email or Password")
+        .then(result => {
+          if (result.status === 200) {
+            console.log(result.data)
+            setAuthTokens(result.data);
+            setLoggedIn(true);
           } else {
-          window.location.href = "/member/"+res.data._id;
+            setIsError(true);
           }
-    } catch (error) {
-      console.log(
-        "There was an error processing your results, please try again",
-        error
-      );
+        })
+        .catch(e => {
+          setIsError(true);
+        });
+    };
+
+    if (isLoggedIn) {
+      return <Redirect to="/newsfeed" />;
     }
-  };
 
   return (
     <Container>
@@ -41,7 +54,7 @@ function Login() {
                 placeholder="password"
                 onChange={(e) => setloginPassword(e.target.value)}
               />
-              <Button onClick={loginButton}>Login</Button>{' '}
+              <Button onClick={loginButton}>Login</Button>
               <Link to={"/signup"}><Button className="float-right">Signup</Button></Link>
             </div>
           </div>
