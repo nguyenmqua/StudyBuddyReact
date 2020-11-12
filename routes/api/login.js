@@ -3,7 +3,9 @@ const loginController = require("../../controllers/loginController");
 
 
 router.route("/")
-  .post(loginController.create);
+  .post(loginController.create)
 
+router.route("/:id")
+  .get(loginController.getById);
 module.exports = router;
 
