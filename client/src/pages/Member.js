@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "../utils/API"
-import { Container, Row, Col, Input, Button } from 'reactstrap';
+import { Container, Row, Col, Input, Button, FormGroup, Label, FormText } from 'reactstrap';
 
 function Member(props) {
   const [ID, setID] = useState("")
-  const [Post, setPost] = useState("")
   const [Username, setUsername] = useState("")
+  const [Subject, setSubject] = useState("")
+  const [Group, setGroup] = useState(0)
+  const [Notes, setNotes] = useState("")
+  const [Location, setLocation] = useState("")
 
 
   // When this component mounts, grab the book with the _id of props.match.params.id
@@ -23,8 +26,11 @@ function Member(props) {
   const handleUserBtnClick = async (e) => {
     try {
       const res = await API.postPost({
+        subject: Subject,
+        group: Group,
+        notes: Notes,
+        location: Location,
         userId: ID,
-        post: Post
       })
       console.log(res)
       window.location.href = "/newsfeed"
@@ -42,7 +48,39 @@ function Member(props) {
           <Col sm="12" md={{ size: 8, offset: 2 }}>
             <p>Hello {Username}</p>
             <h3>Looking for Study Buddy?</h3>
-            <Input onChange={(e)=> setPost(e.target.value)}/>
+            <FormGroup row>
+              <Label for="exampleFile" sm={2}>Subject</Label>
+              <Col sm={10}>
+                <Input type="text" name="file" id="exampleFile"  onChange={(e) => setSubject(e.target.value)}/>
+                <FormText color="muted" />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+                <Label for="exampleSelect" sm={2}>Study Group</Label>
+                <Col sm={10}>
+                  <Input type="select" name="select" id="exampleSelect"  onChange={(e) => setGroup(e.target.value)}>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </Input>
+                </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="exampleFile" sm={2}>Additional Notes</Label>
+              <Col sm={10}>
+                <Input type="text" name="file" id="exampleFile"  onChange={(e) => setNotes(e.target.value)}/>
+                <FormText color="muted" />
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+              <Label for="exampleFile" sm={2}>Location</Label>
+              <Col sm={10}>
+                <Input type="text" name="file" id="exampleFile"  onChange={(e) => setLocation(e.target.value)}/>
+                <FormText color="muted" />
+              </Col>
+            </FormGroup>
             <Button onClick ={handleUserBtnClick}>Submit Post</Button>
           </Col>
         </Row>
