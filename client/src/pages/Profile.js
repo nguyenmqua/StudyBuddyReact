@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
 import API from "../utils/API"
 import { Container, Row, Col, Input, Button, FormGroup, Label, FormText } from 'reactstrap';
+import UserContext from '../utils/UserContext';
+import { Link } from "react-router-dom";
 
 function Member(props) {
-  const [ID, setID] = useState("")
-  const [Username, setUsername] = useState("")
+  const { user,  loggedIn } = useContext(UserContext);
   const [Subject, setSubject] = useState("")
   const [Group, setGroup] = useState(0)
   const [Notes, setNotes] = useState("")
@@ -14,13 +14,10 @@ function Member(props) {
 
   // When this component mounts, grab the book with the _id of props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-  const {id} = useParams()
+
   useEffect(() => {
-    console.log(id)
-    setID(id)
-    API.getUserData(id)
-      .then(res => setUsername(res.data.username))
-      .catch(err => console.log(err));
+    console.log(user)
+    
   }, [])
 
   const handleUserBtnClick = async (e) => {
@@ -30,7 +27,7 @@ function Member(props) {
         group: Group,
         notes: Notes,
         location: Location,
-        userId: ID,
+        userId: user._id
       })
       console.log(res)
       window.location.href = "/newsfeed"
@@ -45,8 +42,9 @@ function Member(props) {
   return (
       <Container fluid>
         <Row>
+          {loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
-            <p>Hello {Username}</p>
+          <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for Study Buddy?</h3>
             <FormGroup row>
               <Label for="exampleFile" sm={2}>Subject</Label>
@@ -83,6 +81,14 @@ function Member(props) {
             </FormGroup>
             <Button onClick ={handleUserBtnClick}>Submit Post</Button>
           </Col>
+          ) : (
+        <div>
+          <h1> Log in to view this page </h1>
+          <Link to="/login">
+            <Button> Login </Button>
+          </Link>
+        </div>
+      )}
         </Row>
       </Container>
     );

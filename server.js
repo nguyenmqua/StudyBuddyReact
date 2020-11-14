@@ -1,49 +1,51 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const routes = require("./routes");
+const express = require('express');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
-const cors = require("cors");
-var session = require("express-session");
-var passport = require("passport");
-const passportLocal = require("passport-local").Strategy;
-const cookieParser = require("cookie-parser");
-const bcrypt = require("bcryptjs");
-const bodyParser = require("body-parser");
-// Define middleware here
+// const colors = require('colors');
+const flash = require('connect-flash');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
+const passport = require('passport');
+const logger = require('morgan');
+const routes = require('./routes');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "http://localhost:3000", // <-- location of the react app were connecting to
-    credentials: true,
-  })
-);
+app.use(logger('dev'));
+app.use(flash());
+app.use(express.static('public'));
+
 app.use(
   session({
-    secret: "secretcode",
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
     resave: true,
     saveUninitialized: true,
-  })
+    secret: 'keyboard cat',
+  }),
 );
-app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./config/passport")(passport);
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
 }
-// Add routes, both API and view
+
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactstudybuddy");
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/studybuddy', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 // Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+app.listen(PORT, (error) => {
+  if (error) throw error;
+  console.log(`🌎  connected on port ${PORT} 🌍`.cyan);
 });
