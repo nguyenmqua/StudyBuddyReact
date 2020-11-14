@@ -30,4 +30,7 @@ export default {
   deletePost: function(id) {
     return axios.delete("/api/post/" + id);
   },
+  getpost: function(id){
+    return axios.get("/api/post" +id)
+  }
 };
