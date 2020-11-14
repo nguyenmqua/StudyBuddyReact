@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react';
 
 const UserContext = React.createContext({
-    id: "",
-    username: "",
-    handleFormSubmit: () => {},
+  userData: {},
+  loggedIn: false,
+  user: {},
+  failureMessage: "",
+  handleInputChange: () => {},
+  handleLogin: () => {},
+  handleSignup: () => {},
+  logout: () => {},
 });
 
 export default UserContext;

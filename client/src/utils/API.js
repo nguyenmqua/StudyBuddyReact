@@ -1,11 +1,20 @@
 import axios from "axios";
 
 export default {
-  register: function(registerInfo) {
-    return axios.post("/api/signup", registerInfo);
+  login: function (loginInfo) {
+    return axios.post('/api/users/login', loginInfo);
   },
-  login: function(loginInfo) {
-    return axios.post("/api/login", loginInfo);
+
+  signup: function (signupInfo) {
+    return axios.post('/api/users/signup', signupInfo);
+  },
+
+  isLoggedIn: function () {
+    return axios.get('/api/users/profile');
+  },
+
+  logout: function () {
+    return axios.get('/api/users/logout');
   },
   getUserData: function(id){
     console.log(id)

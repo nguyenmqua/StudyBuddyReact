@@ -1,11 +1,13 @@
 const router = require("express").Router();
-const signup = require("./signup");
-const login = require("./login")
+
+const users = require("./users")
 const post = require("./post")
 const newsfeed = require("./newsfeed")
 
-router.use("/signup", signup);
-router.use("/login", login)
+
 router.use("/post", post)
 router.use("/newsfeed", newsfeed)
+router.use("/users", users)
+
+
 module.exports = router;
