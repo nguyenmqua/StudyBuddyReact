@@ -5,6 +5,7 @@ import Newsfeed from './pages/Newsfeed';
 import Profile from './pages/Profile';
 import Auth from './pages/Auth';
 import NoMatch from './pages/NoMatch';
+import Message from "./pages/Message"
 import TopNav from './components/TopNav';
 import { Container } from 'reactstrap';
 import UserContext from './utils/UserContext';
@@ -146,6 +147,7 @@ const App = () => {
                 render={() => <Auth action="signup" />}
               />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/newsfeed" component={Newsfeed} />
               <Route exact path="/newsfeed" component={Newsfeed} />
               <Route render={NoMatch} />
             </Switch>

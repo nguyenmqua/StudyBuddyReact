@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import API from "../utils/API"
 import { Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText  } from 'reactstrap';
@@ -10,10 +9,7 @@ function Newsfeed(props){
     const [AllPost, setAllPost] = useState([])
   
   
-    // When this component mounts, grab the book with the _id of props.match.params.id
-    // e.g. localhost:3000/books/599dcb67f0f16317844583fc
     useEffect(() => {
-
       loadPost()
     }, [])
 
@@ -32,7 +28,7 @@ function Newsfeed(props){
     return(
         <Container fluid>
             <Row>
-            {/* {loggedIn ? ( */}
+            {loggedIn ? (
                 <Col sm="12" md={{ size: 8, offset: 2 }} >
                     <h1>newsfeed</h1>
                     {AllPost.map(post => (
@@ -63,14 +59,14 @@ function Newsfeed(props){
                         </Card>
                     ))}
                 </Col>
-                 {/* ) : (
+                  ) : (
                     <div>
                       <h1> Log in to view this page </h1>
                       <Link to="/login">
                         <Button> Login </Button>
                       </Link>
                     </div>
-                  )} */}
+                  )}
             </Row>
         </Container>
     )

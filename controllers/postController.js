@@ -15,5 +15,11 @@ module.exports = {
         .then(dbModel => dbModel.remove())
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
+    },
+    get: function (req,res) {
+        db.Post
+        .findById({_id: req.params.id})
+        .then(DBpost => res.json(DBpost))
+        .catch(err => res.status(422).json(err));
     }
 }
