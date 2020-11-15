@@ -52,6 +52,7 @@ const Signup = () => {
     setImage(file.secure_url)
     setLoading(false)
       console.log(file.secure_url);
+      handleSignup()
     }
 
   const handleConfirmPassword = (event) => {
@@ -286,12 +287,12 @@ const Signup = () => {
         validUserName &&
         validPassword &&
         isConfirmed ? (
-          <Button onClick={handleSignup} color="success" block>
-            Signup
+          <Button onClick={uploadImage} color="success" block>
+            Signup..
           </Button>
         ) : (
-          <Button onClick={handleSignup} color="danger" block disabled>
-            Signup
+          <Button onClick={uploadImage} color="danger" block disabled>
+            Signup..
           </Button>
         )}
         <p className="signupLink">
