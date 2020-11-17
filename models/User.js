@@ -39,6 +39,10 @@ const usersSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  userprofile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "UserProfile"
+  }
 });
 
 usersSchema.methods.generateHash = (password) => {
