@@ -5,6 +5,7 @@ module.exports = {
   userProfile: require("./userProfile"),
 
   User: require("./Users"),
-  Post: require("./Post")
+  Post: require("./Post"),
+  Comments: require("./Comments")
 
 };
