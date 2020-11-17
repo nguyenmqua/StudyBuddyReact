@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import API from "../utils/API"
 import { Container, Row, Col, Input, Button, FormGroup, Label, FormText } from 'reactstrap';
 import UserContext from '../utils/UserContext';
@@ -14,11 +14,6 @@ function Member(props) {
 
   // When this component mounts, grab the book with the _id of props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-
-  useEffect(() => {
-    console.log(user)
-    
-  }, [])
 
   const handleUserBtnClick = async (e) => {
     try {
