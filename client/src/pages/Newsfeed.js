@@ -33,7 +33,7 @@ function Newsfeed(props){
                     <h1>newsfeed</h1>
                     {AllPost.map(post => (
                         <Card key={post._id}>
-                            <CardHeader>     "Subject": {post.subject}
+                            <CardHeader> "User:" {post.userId.username}    "Subject": {post.subject}
                                 <Button className="float-right" close onClick={() => deletePost(post._id)} />
                             </CardHeader>   
                             <CardBody>
