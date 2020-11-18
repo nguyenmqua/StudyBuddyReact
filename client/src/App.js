@@ -57,8 +57,7 @@ const App = () => {
     }
   };
 
-  const handleSignup = (event) => {
-    event.preventDefault();
+  const handleSignup = () => {
     try {
       const data = {
         firstname: userData.firstname,
@@ -67,7 +66,7 @@ const App = () => {
         username: userData.username,
         password: userData.password,
       };
-
+      console.log(data)
       if (userData.username && userData.password) {
         API.signup(data)
           .then((user) => {

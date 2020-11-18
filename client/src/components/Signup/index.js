@@ -26,10 +26,34 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
+  const [imageSelected, setImageSelected] = useState("");
+  const [image, setImage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     console.log(errorMessage);
   }, []);
+
+  const uploadImage = async (e) => {
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file', imageSelected)
+    data.append('upload_preset', 'gsthrmj6')
+    setLoading(true)
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/studybuddycloud/image/upload',
+      {
+        method: 'POST',
+        body: data
+      }
+    )
+    const file = await res.json()
+
+    setImage(file.secure_url)
+    setLoading(false)
+      console.log(file.secure_url);
+      handleSignup()
+    }
 
   const handleConfirmPassword = (event) => {
     const { value } = event.target;
@@ -244,6 +268,18 @@ const Signup = () => {
           />
           <FormText>{errorMessage["confirmPassword"]}</FormText>
         </FormGroup>
+        <FormGroup>
+          <Label for="image">Profile Image</Label>
+          <Input
+            type="file"
+            name="file"
+            placeholder="profile image"
+            onChange={(event) => {
+              setImageSelected(event.target.files[0]);
+            }}
+            />
+             {/* <button onClick ={uploadImage}>Upload Image</button> */}
+        </FormGroup>
         {/* if all fields are valid, allow the user to submit the form */}
         {validFirstName &&
         validLastName &&
@@ -251,12 +287,12 @@ const Signup = () => {
         validUserName &&
         validPassword &&
         isConfirmed ? (
-          <Button onClick={handleSignup} color="success" block>
-            Signup
+          <Button onClick={uploadImage} color="success" block>
+            Signup..
           </Button>
         ) : (
-          <Button onClick={handleSignup} color="danger" block disabled>
-            Signup
+          <Button onClick={uploadImage} color="danger" block disabled>
+            Signup..
           </Button>
         )}
         <p className="signupLink">
