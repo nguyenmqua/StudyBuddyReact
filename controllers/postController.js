@@ -5,7 +5,7 @@ module.exports = {
         console.log(req.body)
         db.Post
         .create(req.body) 
-        .then(res => db.User.findOneAndUpdate({_id: req.body.userId}, { $push: { posts: res._id } }, { new: true },))
+        .then(res => db.User.findOneAndUpdate({_id: req.body.userId}, { $push: { Posts: res._id } }, { new: true },))
         .then(dbPost => res.json(dbPost))
         .catch(err => res.status(422).json(err))
     },
@@ -19,6 +19,11 @@ module.exports = {
     get: function (req,res) {
         db.Post
         .findById({_id: req.params.id})
+        .populate({
+            path: "Comments",
+            populate: {path: "userId"}
+        })
+        .populate("userId")
         .then(DBpost => res.json(DBpost))
         .catch(err => res.status(422).json(err));
     }
