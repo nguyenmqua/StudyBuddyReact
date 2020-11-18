@@ -8,11 +8,16 @@ const postSchema = new Schema({
   notes: {type: String},
   date: { type: Date, default: Date.now },
   location: {type: String},
-  userId: [
+  userId: 
     {
     type: Schema.Types.ObjectId,    
-    ref: "User"
-    }
+    ref: "Users"
+    },
+  Comments:[
+    {
+      type: Schema.Types.ObjectId,    
+      ref: "Comments"
+  }
   ]
 });
 

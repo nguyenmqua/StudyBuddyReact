@@ -147,7 +147,7 @@ const App = () => {
               />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/newsfeed" component={Newsfeed} />
-              <Route exact path="/newsfeed" component={Newsfeed} />
+              <Route exact path="/post/:id" component={Message} />
               <Route render={NoMatch} />
             </Switch>
           </Container>
