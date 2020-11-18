@@ -80,11 +80,3 @@ input#email.form-control, input#username.form-control, input#password.form-contr
   border-radius: 5px;
 }
 
-.btn-danger {
-  background-image: linear-gradient(
-    to right,
-    #77a1d3 0%,
-    #79cbca 51%,
-    #77a1d3 100%
-  );
-}
