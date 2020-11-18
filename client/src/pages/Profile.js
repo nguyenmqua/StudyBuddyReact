@@ -10,7 +10,7 @@ import {
   Label,
   FormText,
 } from "reactstrap";
-import UserContext from "../utils/UserContext";
+import UserContext from "../utils/userContext";
 import { Link } from "react-router-dom";
 
 function Member(props) {

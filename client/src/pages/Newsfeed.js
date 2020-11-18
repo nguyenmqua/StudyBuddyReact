@@ -13,7 +13,7 @@ import {
   CardTitle,
   CardText,
 } from "reactstrap";
-import UserContext from "../utils/UserContext";
+import UserContext from "../utils/userContext";
 import "./Auth/style.css";
 
 function Newsfeed(props) {

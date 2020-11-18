@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import UserContext from "../../utils/UserContext";
+import UserContext from "../../utils/userContext";
 import Logo from "../../assets/img/StudyBuddy-Logo-md.png";
 
 import {

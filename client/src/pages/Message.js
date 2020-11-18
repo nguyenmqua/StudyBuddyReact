@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState} from "react";
 import { useParams } from "react-router-dom";
 import API from "../utils/API"
 import { Container, Row, Col, Card, Button, CardHeader, Input, CardFooter, CardBody, CardTitle, CardText  } from 'reactstrap';
-import UserContext, {user} from "../utils/UserContext"
+import UserContext, {user} from "../utils/userContext"
 
 function Message(props){
     const {user} = useContext(UserContext)

@@ -9,7 +9,7 @@ import {
   Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import UserContext from "../../utils/UserContext";
+import UserContext from "../../utils/userContext";
 
 const Signup = () => {
   const {

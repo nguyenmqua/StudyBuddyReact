@@ -30,6 +30,7 @@
   display: block;
 }
 
+
 .btn-secondary:hover {
   background-position: right center; /* change the direction of the change here */
   color: #fff;
@@ -43,6 +44,7 @@ input#exampleFile.form-control {
   border-radius: 5px;
 }
 
+
 select#exampleSelect.form-control {
   border: 3px solid;
   border-image-source: linear-gradient(
@@ -52,4 +54,37 @@ select#exampleSelect.form-control {
   ) !important;
   border-image-slice: 1;
   border-radius: 5px;
+}
+
+/* Signup Page */
+
+
+input#firstname.form-control,  input#lastname.form-control, 
+input#email.form-control, input#username.form-control, input#password.form-control, input#confirmPassword.form-control {
+  border: 3px solid;
+  border-image-source: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+
+  border-image-slice: 1;
+  border-radius: 5px;
+} 
+
+.btn-danger {
+
+  border: 3px solid;
+  border-image-source: linear-gradient(
+    to right,
+    #74ebd5 0%,
+    #9face6 100%
+  ) !important;
+  border-image-slice: 1;
+  border-radius: 5px;
+}
+
+.btn-danger {
+  background-image: linear-gradient(
+    to right,
+    #77a1d3 0%,
+    #79cbca 51%,
+    #77a1d3 100%
+  );
 }
