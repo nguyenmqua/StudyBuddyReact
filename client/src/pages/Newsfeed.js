@@ -14,6 +14,7 @@ import {
   CardText,
 } from "reactstrap";
 import UserContext from "../utils/UserContext";
+import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
 
 function Newsfeed(props) {
@@ -38,6 +39,14 @@ function Newsfeed(props) {
 
   return (
     <Container fluid>
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 2 }}>
+          <MotiveQuote>
+            {/* <div class="inQuote2">{quote.text}</div>
+            <div class="author">{quote.author}</div> */}
+          </MotiveQuote>
+        </Col>
+      </Row>
       <Row>
         {loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
