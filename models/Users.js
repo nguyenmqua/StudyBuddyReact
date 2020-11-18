@@ -39,10 +39,12 @@ const usersSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  userprofile: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "UserProfile"
+  Posts: [
+    {
+    type: Schema.Types.ObjectId,    
+    ref: "Post"
   }
+  ]
 });
 
 usersSchema.methods.generateHash = (password) => {
@@ -53,6 +55,6 @@ usersSchema.methods.validPassword = (password, encrypted) => {
   return bcrypt.compareSync(password, encrypted);
 };
 
-const User = mongoose.model('User', usersSchema);
+const Users = mongoose.model('Users', usersSchema);
 
-module.exports = User;
+module.exports = Users;

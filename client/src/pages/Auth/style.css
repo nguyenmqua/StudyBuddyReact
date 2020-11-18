@@ -1,0 +1,55 @@
+.card {
+  margin: 25px;
+  padding: 5px;
+  -webkit-box-shadow: 0px 0px 6px 4px #a1c4fd;
+  box-shadow: 0px 0px 6px 4px #a1c4fd;
+}
+
+.btn-secondary a {
+  color: #232ed1 !important;
+}
+
+.btn-secondary {
+  background-image: linear-gradient(
+    to right,
+    #77a1d3 0%,
+    #79cbca 51%,
+    #77a1d3 100%
+  );
+}
+.btn-secondary {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-secondary:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+input#exampleFile.form-control {
+  border: 3px solid;
+  border-image-source: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+  border-image-slice: 1;
+  border-radius: 5px;
+}
+
+select#exampleSelect.form-control {
+  border: 3px solid;
+  border-image-source: linear-gradient(
+    to right,
+    #74ebd5 0%,
+    #9face6 100%
+  ) !important;
+  border-image-slice: 1;
+  border-radius: 5px;
+}

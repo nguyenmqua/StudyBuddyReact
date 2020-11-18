@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import API from './utils/API';
-import Newsfeed from './pages/Newsfeed';
-import Profile from './pages/Profile';
-import Auth from './pages/Auth';
-import NoMatch from './pages/NoMatch';
-import Message from "./pages/Message"
-import TopNav from './components/TopNav';
-import { Container } from 'reactstrap';
-import UserContext from './utils/UserContext';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import API from "./utils/API";
+import Newsfeed from "./pages/Newsfeed";
+import Profile from "./pages/Profile";
+import Auth from "./pages/Auth";
+import NoMatch from "./pages/NoMatch";
+import Message from "./pages/Message";
+import TopNav from "./components/TopNav";
+import { Container } from "reactstrap";
+import UserContext from "./utils/UserContext";
 
 const App = () => {
   const [userData, setUserData] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    username: '',
-    password: '',
+    firstname: "",
+    lastname: "",
+    email: "",
+    username: "",
+    password: "",
   });
   const [loggedIn, setLoggedin] = useState(false);
   const [user, setUser] = useState(null);
@@ -43,12 +43,12 @@ const App = () => {
           if (user.data.loggedIn) {
             setLoggedin(true);
             setUser(user.data.user);
-            console.log(user.data.user)
-            console.log('log in successful');
-            window.location.href = '/profile';
+            console.log(user.data.user);
+            console.log("log in successful");
+            window.location.href = "/profile";
           } else {
-            console.log('Something went wrong :(');
-            alert('Login failed, Please try again.');
+            console.log("Something went wrong :(");
+            alert("Login failed, Please try again.");
           }
         })
         .catch((error) => {
@@ -57,7 +57,8 @@ const App = () => {
     }
   };
 
-  const handleSignup = () => {
+  const handleSignup = (event) => {
+    event.preventDefault();
     try {
       const data = {
         firstname: userData.firstname,
@@ -66,20 +67,20 @@ const App = () => {
         username: userData.username,
         password: userData.password,
       };
-      console.log(data)
+
       if (userData.username && userData.password) {
         API.signup(data)
           .then((user) => {
-            if (user.data === 'email is already in use') {
-              alert('Email already in use.');
+            if (user.data === "email is already in use") {
+              alert("Email already in use.");
             }
             if (user.data.loggedIn) {
               if (user.data.loggedIn) {
                 setLoggedin(true);
                 setUser(user.data.user);
-                window.location.href = '/profile';
+                window.location.href = "/profile";
               } else {
-                console.log('something went wrong :(');
+                console.log("something went wrong :(");
                 console.log(user.data);
                 setFailureMessage(user.data);
               }
@@ -90,7 +91,7 @@ const App = () => {
           });
       }
     } catch (error) {
-      console.log('App -> error', error);
+      console.log("App -> error", error);
     }
   };
 
@@ -110,7 +111,7 @@ const App = () => {
   const logout = () => {
     if (loggedIn) {
       API.logout().then(() => {
-        console.log('logged out successfully');
+        console.log("logged out successfully");
         setLoggedin(false);
         setUser(null);
       });
@@ -147,7 +148,7 @@ const App = () => {
               />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/newsfeed" component={Newsfeed} />
-              <Route exact path="/newsfeed" component={Newsfeed} />
+              <Route exact path="/post/:id" component={Message} />
               <Route render={NoMatch} />
             </Switch>
           </Container>
