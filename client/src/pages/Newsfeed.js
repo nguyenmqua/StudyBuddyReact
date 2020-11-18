@@ -41,7 +41,7 @@ function Newsfeed(props) {
       <Row>
         {loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
-            <h1>newsfeed</h1>
+            <h1>Study Buddy Requests</h1>
             {AllPost.map((post) => (
               <Card key={post._id}>
                 <CardHeader>
