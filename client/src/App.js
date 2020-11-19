@@ -58,7 +58,7 @@ const App = () => {
   };
 
   const handleSignup = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     try {
       const data = {
         firstname: userData.firstname,
