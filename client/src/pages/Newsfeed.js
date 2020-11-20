@@ -43,7 +43,7 @@ function Newsfeed(props) {
         {!loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
             <h2>Welcome to Study Buddy!</h2>
-            <p>
+            <p style={{ fontSize: "1.25em" }}>
               Study Buddy is designed to help you connect with fellow students
               or like minded folks who would like to study the same subject
               together. Login, Choose a Subject, Choose to Connect Virtually or
@@ -96,7 +96,7 @@ function Newsfeed(props) {
           </Col>
         ) : (
           <div>
-            <h1> Log in to view this page </h1>
+            <h4> Log in to view this page </h4>
             <Link to="/login">
               <Button> Login </Button>
             </Link>
