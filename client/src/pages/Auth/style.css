@@ -54,3 +54,13 @@ select#exampleSelect.form-control {
   border-image-slice: 1;
   border-radius: 5px;
 }
+
+#loginSection {
+  margin-left: 200px;
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+  #loginSection {
+    margin-left: 0px;
+  }
+}

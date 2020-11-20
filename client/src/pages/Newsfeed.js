@@ -95,7 +95,7 @@ function Newsfeed(props) {
             ))}
           </Col>
         ) : (
-          <div>
+          <div id="loginSection">
             <h4> Log in to view this page </h4>
             <Link to="/login">
               <Button> Login </Button>
