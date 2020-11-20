@@ -40,16 +40,25 @@ function Newsfeed(props) {
   return (
     <Container fluid>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 2 }}>
-          <MotiveQuote>
-            {/* <div class="inQuote2">{quote.text}</div>
-            <div class="author">{quote.author}</div> */}
-          </MotiveQuote>
-        </Col>
+        {!loggedIn ? (
+          <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <h2>Welcome to Study Buddy!</h2>
+            <p>
+              Study Buddy is designed to help you connect with fellow students
+              or like minded folks who would like to study the same subject
+              together. Login, Choose a Subject, Choose to Connect Virtually or
+              in Person and Choose how many people you'd like to study with. You
+              can see who's studying the same subject and connect with them.
+            </p>
+          </Col>
+        ) : (
+          ""
+        )}
       </Row>
       <Row>
         {loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <MotiveQuote />
             <h1>Study Buddy Requests</h1>
             {AllPost.map((post) => (
               <Card key={post._id}>
