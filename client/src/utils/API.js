@@ -35,5 +35,8 @@ export default {
   },
   postComment: function(data){
     return axios.post("/api/comments",data)
+  },
+  postProfilePic: function (data) {
+    return axios.post("/api/profilePic", data)
   }
 };

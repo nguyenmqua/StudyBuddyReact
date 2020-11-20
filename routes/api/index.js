@@ -4,11 +4,13 @@ const users = require("./users")
 const post = require("./post")
 const newsfeed = require("./newsfeed")
 const comments = require("./comments")
+const profilePic = require("./profilePic")
 
 router.use("/post", post)
 router.use("/newsfeed", newsfeed)
 router.use("/users", users)
 router.use("/comments", comments)
+router.use("/profilePic", profilePic)
 
 
 module.exports = router;

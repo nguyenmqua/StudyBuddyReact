@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
-import UserContext from '../../utils/UserContext';
+import React, { useState, useContext } from "react";
+import UserContext from "../../utils/UserContext";
+import Logo from "../../assets/img/StudyBuddy-Logo-md.png";
 
 import {
   Collapse,
@@ -13,7 +14,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from 'reactstrap';
+} from "reactstrap";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +27,9 @@ const Navigation = () => {
   return (
     <div>
       <Navbar className="navbar" light expand="md">
-        <NavbarBrand href="/">React Auth</NavbarBrand>
+        <NavbarBrand href="/">
+          <img src={Logo} />
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
