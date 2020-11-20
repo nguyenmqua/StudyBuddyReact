@@ -14,6 +14,7 @@ import {
   CardText,
 } from "reactstrap";
 import UserContext from "../utils/UserContext";
+import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
 
 function Newsfeed(props) {
@@ -39,8 +40,25 @@ function Newsfeed(props) {
   return (
     <Container fluid>
       <Row>
+        {!loggedIn ? (
+          <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <h2>Welcome to Study Buddy!</h2>
+            <p style={{ fontSize: "1.25em" }}>
+              Study Buddy is designed to help you connect with fellow students
+              or like minded folks who would like to study the same subject
+              together. Login, Choose a Subject, Choose to Connect Virtually or
+              in Person and Choose how many people you'd like to study with. You
+              can see who's studying the same subject and connect with them.
+            </p>
+          </Col>
+        ) : (
+          ""
+        )}
+      </Row>
+      <Row>
         {loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <MotiveQuote />
             <h1>Study Buddy Requests</h1>
             {AllPost.map((post) => (
               <Card key={post._id}>
@@ -77,8 +95,8 @@ function Newsfeed(props) {
             ))}
           </Col>
         ) : (
-          <div>
-            <h1> Log in to view this page </h1>
+          <div id="loginSection">
+            <h4> Log in to view this page </h4>
             <Link to="/login">
               <Button> Login </Button>
             </Link>
