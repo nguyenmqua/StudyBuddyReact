@@ -37,7 +37,7 @@ const Navigation = () => {
               <NavLink href="/">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/profile">Profile</NavLink>
+              <NavLink href="/profile">Request Buddy</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
