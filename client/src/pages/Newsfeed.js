@@ -16,11 +16,12 @@ import {
 import UserContext from "../utils/UserContext";
 import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
+import Search from "../components/Search"
 
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
-
+  const [search, setSearch] = useState("");
   useEffect(() => {
     loadPost();
   }, []);
@@ -36,6 +37,14 @@ function Newsfeed(props) {
       .then((res) => loadPost())
       .catch((err) => console.log(err));
   }
+
+  
+
+    const submitSearch = () => {
+        API.getSearch(search)
+            .then((res) =>{setAllPost(res.data)})
+            .catch((err) => console.log(err))
+    }
 
   return (
     <Container fluid>
@@ -60,6 +69,7 @@ function Newsfeed(props) {
           <Col sm="12" md={{ size: 8, offset: 2 }}>
             <MotiveQuote />
             <h1>Study Buddy Requests</h1>
+            <Search setSearch={setSearch} submitSearch={submitSearch} />
             {AllPost.map((post) => (
               <Card key={post._id}>
                 <CardHeader>

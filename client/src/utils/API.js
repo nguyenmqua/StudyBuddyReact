@@ -38,5 +38,9 @@ export default {
   },
   postProfilePic: function (data) {
     return axios.post("/api/profilePic", data)
+  },
+
+  getSearch: function (data) {
+    return axios.get("/api/search/" + data)
   }
 };
