@@ -143,6 +143,11 @@ const App = () => {
               />
               <Route
                 exact
+                path="/reset"
+                // render={() => <Auth action="login" />}
+              />
+              <Route
+                exact
                 path="/signup"
                 render={() => <Auth action="signup" />}
               />

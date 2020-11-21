@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
 import "./style.css";
 
-const Login = () => {
+const SendReset = () => {
   const { userData, handleInputChange, handleLogin } = useContext(UserContext);
   return (
     <div>
-      <h2 className="loginTitle">Login</h2>
+      <h2 className="resetTitle">Reset Password</h2>
       <hr />
       <Form>
         <FormGroup>
@@ -39,12 +39,9 @@ const Login = () => {
         <p className="signupLink">
           <Link to="/signup">Don't have an account? Sign up here</Link>
         </p>
-        <p className="resetLink">
-          <Link to="/sendReset">Forgot password?</Link>
-        </p>
       </Form>
     </div>
   );
 };
 
-export default Login;
+export default SendReset;
