@@ -7,6 +7,7 @@ import Auth from "./pages/Auth";
 import NoMatch from "./pages/NoMatch";
 import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
+import Footer from "./components/Footer";
 import { Container } from "reactstrap";
 import UserContext from "./utils/UserContext";
 
@@ -17,14 +18,14 @@ const App = () => {
     email: "",
     username: "",
     password: "",
-    image: ""
+    image: "",
   });
   const [loggedIn, setLoggedin] = useState(false);
   const [user, setUser] = useState(null);
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
-  const [image, setImage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     isLoggedIn();
   }, []);
@@ -69,14 +70,14 @@ const App = () => {
         email: userData.email,
         username: userData.username,
         password: userData.password,
-        Image: profilePic
+        Image: profilePic,
       };
-      console.log(profilePic)
-      console.log(data)
+      console.log(profilePic);
+      console.log(data);
       if (userData.username && userData.password) {
         API.signup(data)
           .then((user) => {
-            console.log(user)
+            console.log(user);
             if (user.data === "email is already in use") {
               alert("Email already in use.");
             }
@@ -115,30 +116,30 @@ const App = () => {
   };
 
   const uploadImage = async (e) => {
-    const files = e.target.files
-    const data = new FormData()
-    data.append('file', imageSelected)
-    data.append('upload_preset', 'gsthrmj6')
-    setLoading(true)
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", imageSelected);
+    data.append("upload_preset", "gsthrmj6");
+    setLoading(true);
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/studybuddycloud/image/upload',
+      "https://api.cloudinary.com/v1_1/studybuddycloud/image/upload",
       {
-        method: 'POST',
-        body: data
+        method: "POST",
+        body: data,
       }
-    )
-    const file = await res.json()
-      handleSignup(file.secure_url)
-    }
+    );
+    const file = await res.json();
+    handleSignup(file.secure_url);
+  };
 
-    // const setUpProfilePic = (image) => {
-    //   API.postProfilePic({profilePic: image})
-    //   .then(res=> {
-    //     setImage(res.data.profilePic);
-    //     console.log(res.data.profilePic)
-    //   })
-    //   .then(handleSignup())
-    // }
+  // const setUpProfilePic = (image) => {
+  //   API.postProfilePic({profilePic: image})
+  //   .then(res=> {
+  //     setImage(res.data.profilePic);
+  //     console.log(res.data.profilePic)
+  //   })
+  //   .then(handleSignup())
+  // }
 
   const logout = () => {
     if (loggedIn) {
@@ -160,7 +161,7 @@ const App = () => {
     handleSignup,
     logout,
     setImageSelected,
-    uploadImage
+    uploadImage,
   };
   return (
     <UserContext.Provider value={contextValue}>
@@ -186,6 +187,7 @@ const App = () => {
               <Route render={NoMatch} />
             </Switch>
           </Container>
+          <Footer />
         </div>
       </Router>
     </UserContext.Provider>
