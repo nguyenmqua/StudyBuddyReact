@@ -14,7 +14,7 @@ import {
   CardTitle,
   CardText,
 } from "reactstrap";
-import UserContext, { user } from "../utils/UserContext";
+import UserContext, { user } from "../utils/userContext";
 
 function Message(props) {
   const { user } = useContext(UserContext);

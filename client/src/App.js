@@ -8,7 +8,7 @@ import NoMatch from "./pages/NoMatch";
 import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import { Container } from "reactstrap";
-import UserContext from "./utils/UserContext";
+import UserContext from "./utils/userContext";
 
 const App = () => {
   const [userData, setUserData] = useState({
