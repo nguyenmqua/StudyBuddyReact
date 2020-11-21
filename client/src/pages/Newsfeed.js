@@ -71,7 +71,7 @@ function Newsfeed(props) {
             <h1>Study Buddy Requests</h1>
             <Search setSearch={setSearch} submitSearch={submitSearch} />
             {AllPost.map((post) => (
-              <Card key={post._id}>
+              <Card  key={post._id}>
                 <CardHeader>
                   <img src = {post.userId.Image} width="50px"></img>
                   "User:" {post.userId.username} "Subject": {post.subject}
