@@ -9,6 +9,10 @@ import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import { Container } from "reactstrap";
 import UserContext from "./utils/UserContext";
+import SendReset from "./components/Forgot/sendReset"
+
+
+
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -118,6 +122,9 @@ const App = () => {
     }
   };
 
+  
+  
+
   const contextValue = {
     userData,
     loggedIn,
@@ -144,7 +151,7 @@ const App = () => {
               <Route
                 exact
                 path="/reset"
-                // render={() => <Auth action="login" />}
+                component = {SendReset}
               />
               <Route
                 exact

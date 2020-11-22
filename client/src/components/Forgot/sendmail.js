@@ -1,82 +1,56 @@
-/* eslint no-console: 0 */
+// import React, { useState, useEffect, useContext } from "react";
+// import UserContext from "../../utils/UserContext";
 
-'use strict';
+// const FormRequest = () => {
+//     const {
+//         userData,
+//         handleInputChange,
+//       } = useContext(UserContext);
+// //   const [email, setEmail] = useState('');
+// //   const [message, setMessage] = useState('');
 
-
-const nodemailer = require('../../lib/nodemailer');
-require('dotenv').config();
-
-async function main() {
-    // Create a SMTP transporter object
-    // let transporter = nodemailer.createTransport({
-    //     sendmail: true,
-    //     newline: 'windows',
-    //     logger: false
-    // });
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        auth: {
-            user: (process.env.MAIL),
-            pass: (process.env.PASS),
-        }
-    });
-
-    // Message object
-    let message = {
-        from: '<nodetest30@gmail.com>',
-
-        // Comma separated list of recipients
-        to: '<>',
-        bcc: '',
-
-        // Subject of the message
-        subject: 'Nodemailer is unicode friendly ✔',
-
-        // plaintext body
-        text: 'Hello to myself!',
-
-        // HTML body
-        html:
-            '<p><b>Hello</b> to myself <img src="cid:note@example.com"/></p>' +
-            '<p>Here\'s a nyan cat for you as an embedded attachment:<br/><img src="cid:nyan@example.com"/></p>',
-
-        // An array of attachments
-        attachments: [
-            // String attachment
-            {
-                filename: 'notes.txt',
-                content: 'Some notes about this e-mail',
-                contentType: 'text/plain' // optional, would be detected from the filename
-            },
-
-            // Binary Buffer attachment
-            {
-                filename: 'image.png',
-                content: Buffer.from(
-                    'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-                        '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-                        'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
-                    'base64'
-                ),
-
-                cid: 'note@example.com' // should be as unique as possible
-            },
-
-            // File Stream attachment
-            // {
-            //     filename: 'nyan cat ✔.gif',
-            //     path: __dirname + '/assets/nyan.gif',
-            //     cid: 'nyan@example.com' // should be as unique as possible
-            // }
-        ]
-    };
-
-    let info = await transporter.sendMail(message);
-    console.log('Message sent successfully as %s', info.messageId);
-}
-
-main().catch(err => {
-    console.error(err.message);
-    process.exit(1);
-});
+//   const submitRequest = async (e) => {
+//     e.preventDefault();
+//     console.log({ email, message });
+//     const response = await fetch("/access", { 
+//       method: 'POST', 
+//       headers: { 
+//           'Content-type': 'application/json'
+//       }, 
+//       body: JSON.stringify({email, message}) 
+//   }); 
+//     const resData = await response.json(); 
+//     if (resData.status === 'success'){
+//       alert("Message Sent."); 
+//       this.resetForm()
+//   }else if(resData.status === 'fail'){
+//       alert("Message failed to send.")
+//   }
+//   };
+//   return (
+//     <div>
+//       <h2 className="resetTitle">Reset Password</h2>
+//       <hr />
+//       <Form>
+//         <FormGroup>
+//           <Label for="email">Email Adress:</Label>
+//           <Input
+//             type="text"
+//             name="email"
+//             id="email"
+//             placeholder="email"
+//             value={userData.email}
+//             onChange={handleInputChange}
+//           />
+//         </FormGroup>
+//         <Button onClick={submitRequest} color="primary" block>
+//           Send Reset Email
+//         </Button>
+//         <p className="signupLink">
+//           <Link to="/signup">Don't have an account? Sign up here</Link>
+//         </p>
+//       </Form>
+//     </div>
+//   );
+// };
+// export default FormRequest;

@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export default {
+  sendMail: function (email) {
+    return axios.post('/sendMail', email)
+  },
   login: function (loginInfo) {
     return axios.post('/api/users/login', loginInfo);
   },

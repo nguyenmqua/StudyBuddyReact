@@ -1,11 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
-import "./style.css";
+import API from "../../utils/API";
+// import "./style.css";
 
 const SendReset = () => {
   const { userData, handleInputChange, handleLogin } = useContext(UserContext);
+  const [email, setEmail] = useState("")
+  const handleFormSubmit = (event) => {
+      console.log(email)
+    API.sendMail({email:email}).then(res => {
+        console.log(res)
+    })
+  }
   return (
     <div>
       <h2 className="resetTitle">Reset Password</h2>
@@ -18,11 +26,11 @@ const SendReset = () => {
             name="email"
             id="email"
             placeholder="email"
-            value={userData.email}
-            onChange={handleInputChange}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </FormGroup>
-        <Button onClick={handleLogin} color="primary" block>
+        <Button onClick={handleFormSubmit} color="primary" block>
           Send Reset Email
         </Button>
         <p className="signupLink">
