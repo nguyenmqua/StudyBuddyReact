@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import UserContext from "../utils/userContext";
 import { Link } from "react-router-dom";
+import "./style.css";
 import { get } from "mongoose";
 
 function Member(props) {
@@ -25,7 +26,6 @@ function Member(props) {
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
 
   const handleUserBtnClick = async (e) => {
-    
     try {
       const res = await API.postPost({
         subject: Subject,
@@ -48,10 +48,14 @@ function Member(props) {
     <Container fluid>
       <Row>
         {loggedIn ? (
-          <Col sm="12" md={{ size: 8, offset: 2 }}>
+          <Col id="reqBody" sm="12" md={{ size: 8, offset: 2 }}>
             <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for a Study Buddy?</h3>
-            <img src={user && user.Image} width="200px" className="float-left"></img>
+            <img
+              src={user && user.Image}
+              width="200px"
+              className="float-left"
+            ></img>
             <FormGroup row>
               <Label for="exampleFile" sm={2}>
                 Subject

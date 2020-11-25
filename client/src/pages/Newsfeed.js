@@ -18,11 +18,12 @@ import {
 import UserContext from "../utils/userContext";
 import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
+import Search from "../components/Search"
 
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
-
+  const [search, setSearch] = useState("");
   useEffect(() => {
     loadPost();
   }, []);
@@ -38,6 +39,14 @@ function Newsfeed(props) {
       .then((res) => loadPost())
       .catch((err) => console.log(err));
   }
+
+  
+
+    const submitSearch = () => {
+        API.getSearch(search)
+            .then((res) =>{setAllPost(res.data)})
+            .catch((err) => console.log(err))
+    }
 
   return (
     <Container>
