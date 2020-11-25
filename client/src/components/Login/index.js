@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { Link } from "react-router-dom";
-import UserContext from "../../utils/userContext";
+import UserContext from "../../utils/UserContext";
 import "./style.css";
 
 const Login = () => {

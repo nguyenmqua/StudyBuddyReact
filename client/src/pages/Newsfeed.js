@@ -15,10 +15,10 @@ import {
   CardText,
   CardImg,
 } from "reactstrap";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
-import Search from "../components/Search"
+import Search from "../components/Search";
 
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
@@ -40,13 +40,13 @@ function Newsfeed(props) {
       .catch((err) => console.log(err));
   }
 
-  
-
-    const submitSearch = () => {
-        API.getSearch(search)
-            .then((res) =>{setAllPost(res.data)})
-            .catch((err) => console.log(err))
-    }
+  const submitSearch = () => {
+    API.getSearch(search)
+      .then((res) => {
+        setAllPost(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Container>
@@ -72,14 +72,18 @@ function Newsfeed(props) {
             <MotiveQuote />
             {AllPost.map((post) => (
               <Card key={post._id}>
-                 <CardHeader className="header-background"> 
-                 <CardImg  className ="card-image"variant="top" src="../img/background.jpg"/>
-                 {/* <img src = {post.userId.Image} width="50px"></img> */}
-                 </CardHeader>
-                 
+                <CardHeader className="header-background">
+                  <CardImg
+                    className="card-image"
+                    variant="top"
+                    src="../img/background.jpg"
+                  />
+                  {/* <img src = {post.userId.Image} width="50px"></img> */}
+                </CardHeader>
+
                 <CardBody>
-                 <CardTitle> 
-                    <CardText className ="card-text">
+                  <CardTitle>
+                    <CardText className="card-text">
                       <h2>{post.userId.username}</h2>
                     </CardText>
                   </CardTitle>
@@ -88,14 +92,13 @@ function Newsfeed(props) {
                       <p>{post.notes}</p>
                     </CardText>
                   </CardTitle>
-                  
+
                   <Button className="Connect-Button">
                     <Link to={"/post/" + post._id}>
                       <strong>Lets Link Up!</strong>
                     </Link>
                   </Button>
-                  
-                  
+
                   <div className="card-stats">
                     <div className="stat-border">
                       <div className="value">Buddies:</div>
@@ -111,13 +114,13 @@ function Newsfeed(props) {
                     </div>
                   </div>
                 </CardBody>
-                <CardFooter className ="footer-background">
-                  {moment(post.date).startOf('hour').fromNow(post.createdAt)}
+                <CardFooter className="footer-background">
+                  {moment(post.date).startOf("hour").fromNow(post.createdAt)}
                   <Button
                     className="float-right"
                     close
                     onClick={() => deletePost(post._id)}
-                  /> 
+                  />
                 </CardFooter>
               </Card>
             ))}
