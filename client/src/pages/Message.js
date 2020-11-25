@@ -29,15 +29,25 @@ function Message(props) {
   const { id } = useParams();
   useEffect(() => {
     loadPost();
+    loadComments()
   }, []);
+
+  function loadComments() {
+    API.getComments(id)
+      .then((res) => {
+        // setCurrentPost(res.data);
+        // setCurrentPostAuthor(res.data.userId.username);
+        setDisplayComments(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   function loadPost() {
     API.getPost(id)
       .then((res) => {
         setCurrentPost(res.data);
         setCurrentPostAuthor(res.data.userId.username);
-        setDisplayComments(res.data.Comments);
-        console.log(res.data.Comments);
       })
       .then(() => console.log(CurrentPostAuthor))
       .catch((err) => console.log(err));
@@ -54,7 +64,7 @@ function Message(props) {
       const res = await API.postComment({
         comment: Comment,
         userId: user._id,
-        postid: id,
+        postId: id,
       });
       console.log(res);
       window.location.href = "/post/" + id;
@@ -79,6 +89,7 @@ function Message(props) {
               <CardTitle>Location</CardTitle>
               <CardText>{CurrentPost.location}</CardText>
             </CardBody>
+
             <CardFooter>
               {moment(CurrentPost.date).startOf("minute").fromNow()}
             </CardFooter>
@@ -114,6 +125,37 @@ function Message(props) {
                 </Card>
               </CardGroup>
             )}
+
+            <CardFooter>{moment(CurrentPost.date).format('MMMM Do YYYY, h:mm:ss a')} ago</CardFooter>
+          </Card>
+        </Col>
+      </Row>
+    
+          {DisplayComments.map((comment) => (
+            <Row key={comment._id}>
+              <Col sm="12" md={{ size: 12 }}>
+                {CurrentPostAuthor === comment.userId.username ? (
+            <CardGroup className="float-right" >
+
+            <Card className="bg-info clearfix">
+              <CardBody className="float-right" >
+                <b>{comment.userId.username}</b>: {comment.comment}
+              </CardBody>
+              <CardFooter>{moment(comment.date).format('MMMM Do YYYY, h:mm:ss a')}</CardFooter>
+            </Card>
+            </CardGroup>
+              ) : (
+                <CardGroup className="float-left"  key={comment._id}>
+                <Card className ="float-left" >
+                <CardBody >
+                  <b>{comment.userId.username}</b>: {comment.comment}
+                </CardBody>
+                <CardFooter> {moment(comment.date).format('MMMM Do YYYY, h:mm:ss a')}</CardFooter>
+              </Card>
+                </CardGroup>
+                )}  
+        
+
           </Col>
 
           <Col sm="3" md={{ size: 3 }}></Col>
