@@ -20,8 +20,9 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.3",
     "cloudinary": "^1.23.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
@@ -31,12 +32,14 @@
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "memorystore": "^1.6.4",
+    "moment": "^2.29.1",
     "mongoose": "^5.3.16",
     "morgan": "^1.10.0",
     "node-sass": "^5.0.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "reactstrap": "^8.7.1",
     "styled-components": "^5.2.1"
