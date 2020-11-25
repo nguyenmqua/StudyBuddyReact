@@ -30,7 +30,9 @@ function Newsfeed(props) {
 
   function loadPost() {
     API.newsfeed()
-      .then((res) => setAllPost(res.data))
+      .then((res) => {
+        console.log(res.data)
+        setAllPost(res.data)})
       .catch((err) => console.log(err));
   }
 
@@ -112,7 +114,7 @@ function Newsfeed(props) {
                   </div>
                 </CardBody>
                 <CardFooter className ="footer-background">
-                  {moment(post.date).startOf('hour').fromNow(post.createdAt)}
+                  {moment(post.date).format('MMMM Do YYYY, h:mm:ss a')}
                   <Button
                     className="float-right"
                     close
