@@ -9,7 +9,7 @@ import {
   Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import UserContext from "../../utils/userContext";
+import UserContext from "../../utils/UserContext";
 
 const Signup = () => {
   const {
@@ -17,7 +17,7 @@ const Signup = () => {
     handleInputChange,
     failureMessage,
     setImageSelected,
-    uploadImage
+    uploadImage,
   } = useContext(UserContext);
   const [validFirstName, setValidFirstName] = useState(false);
   const [validLastName, setValidLastName] = useState(false);
@@ -27,13 +27,10 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
-  
 
   useEffect(() => {
     console.log(errorMessage);
   }, []);
-
-
 
   const handleConfirmPassword = (event) => {
     const { value } = event.target;
@@ -157,12 +154,10 @@ const Signup = () => {
       });
     }
   };
-  
 
   return (
-    
     <div>
-       <h2 className="loginTitle">Signup</h2>
+      <h2 className="loginTitle">Signup</h2>
       <hr />
       {failureMessage ? <Alert type="danger">{failureMessage}</Alert> : <p></p>}
       <Form>
@@ -205,7 +200,7 @@ const Signup = () => {
             onChange={handleInputChange}
             onBlur={checkEmail}
             valid={validEmail}
-          /> 
+          />
           <FormText>{errorMessage["email"]}</FormText>
         </FormGroup>
         <FormGroup>
@@ -249,7 +244,7 @@ const Signup = () => {
             valid={isConfirmed}
           />
           <FormText>{errorMessage["confirmPassword"]}</FormText>
-        </FormGroup> 
+        </FormGroup>
         <FormGroup>
           <Label for="image">Profile Image</Label>
           <Input
@@ -259,12 +254,12 @@ const Signup = () => {
             onChange={(event) => {
               setImageSelected(event.target.files[0]);
             }}
-            />
+          />
         </FormGroup>
-      
+
         {/* if all fields are valid, allow the user to submit the form */}
-         {validFirstName && 
-         validLastName &&
+        {validFirstName &&
+        validLastName &&
         validEmail &&
         validUserName &&
         validPassword &&
@@ -279,8 +274,8 @@ const Signup = () => {
         )}
         <p className="signupLink">
           <Link to="/login">Already have an account? Sign in here</Link>
-        </p> 
-       </Form>
+        </p>
+      </Form>
     </div>
   );
 };
