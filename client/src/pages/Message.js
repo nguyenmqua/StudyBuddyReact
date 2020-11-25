@@ -15,8 +15,11 @@ import {
   CardText,
   CardGroup,
 } from "reactstrap";
+
 import moment from "moment";
 import UserContext, { user } from "../utils/UserContext";
+import moment from "moment"
+
 
 function Message(props) {
   const { user } = useContext(UserContext);

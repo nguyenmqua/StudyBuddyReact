@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
+import moment from "moment";
 import {
   Container,
   Row,
@@ -12,8 +13,9 @@ import {
   CardBody,
   CardTitle,
   CardText,
+  CardImg,
 } from "reactstrap";
-import UserContext from "../utils/UserContext";
+import UserContext from "../utils/userContext";
 import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
 import Search from "../components/Search"
@@ -47,7 +49,7 @@ function Newsfeed(props) {
     }
 
   return (
-    <Container fluid>
+    <Container>
       <Row>
         {!loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
@@ -66,40 +68,56 @@ function Newsfeed(props) {
       </Row>
       <Row>
         {loggedIn ? (
-          <Col sm="12" md={{ size: 8, offset: 2 }}>
+          <Col sm="12" md={{ size: 5, offset: 2 }}>
             <MotiveQuote />
-            <h1>Study Buddy Requests</h1>
-            <Search setSearch={setSearch} submitSearch={submitSearch} />
             {AllPost.map((post) => (
-              <Card  key={post._id}>
-                <CardHeader>
-                  <img src = {post.userId.Image} width="50px"></img>
-                  "User:" {post.userId.username} "Subject": {post.subject}
-                  <Button
-                    className="float-right"
-                    close
-                    onClick={() => deletePost(post._id)}
-                  />
-                </CardHeader>
+              <Card key={post._id}>
+                 <CardHeader className="header-background"> 
+                 <CardImg  className ="card-image"variant="top" src="../img/background.jpg"/>
+                 {/* <img src = {post.userId.Image} width="50px"></img> */}
+                 </CardHeader>
+                 
                 <CardBody>
-                  <CardTitle>
-                    Notes:
-                    <CardText>{post.notes}</CardText>
+                 <CardTitle> 
+                    <CardText className ="card-text">
+                      <h2>{post.userId.username}</h2>
+                    </CardText>
                   </CardTitle>
                   <CardTitle>
-                    Group Size
-                    <CardText>{post.group}</CardText>
+                    <CardText className="card-text">
+                      <p>{post.notes}</p>
+                    </CardText>
                   </CardTitle>
-                  <CardTitle>Location</CardTitle>
-                  <CardText>{post.location}</CardText>
-                </CardBody>
-                <CardFooter>
-                  {post.date}
-                  <Button className="float-right">
+                  
+                  <Button className="Connect-Button">
                     <Link to={"/post/" + post._id}>
                       <strong>Lets Link Up!</strong>
                     </Link>
                   </Button>
+                  
+                  
+                  <div className="card-stats">
+                    <div className="stat-border">
+                      <div className="value">Buddies:</div>
+                      <div className="type">{post.group}</div>
+                    </div>
+                    <div className="stat-border">
+                      <div className="value">Subject:</div>
+                      <div className="type">{post.subject}</div>
+                    </div>
+                    <div className="stat-border">
+                      <div className="value">Location:</div>
+                      <div className="type">{post.location}</div>
+                    </div>
+                  </div>
+                </CardBody>
+                <CardFooter className ="footer-background">
+                  {moment(post.date).startOf('hour').fromNow(post.createdAt)}
+                  <Button
+                    className="float-right"
+                    close
+                    onClick={() => deletePost(post._id)}
+                  /> 
                 </CardFooter>
               </Card>
             ))}
