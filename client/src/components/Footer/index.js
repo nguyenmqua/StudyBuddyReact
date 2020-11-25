@@ -4,7 +4,7 @@ import "./style.css";
 function Footer() {
   return (
     <>
-      {/* <footer id="footer">
+      <footer id="footer">
         StudyBuddy &copy; 2020 | All Rights Reserved | &nbsp;
         <a
           href="https://github.com/nguyenmqua/StudyBuddyReact"
@@ -13,7 +13,7 @@ function Footer() {
         >
           Learn More
         </a>
-      </footer> */}
+      </footer>
     </>
   );
 }

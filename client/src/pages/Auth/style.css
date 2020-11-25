@@ -4,10 +4,9 @@
   margin: 25px;
   padding: 5px;
   -webkit-box-shadow: 0px 0px 6px 4px #a1c4fd;
-  box-shadow: 0px 0px 6px 4px #a1c4fd; 
+  box-shadow: 0px 0px 6px 4px #a1c4fd;
   cursor: pointer;
-  flex-wrap:wrap;
-
+  flex-wrap: wrap;
 }
 .header-background {
   background-color: white;
@@ -22,12 +21,22 @@
   text-align: center;
   position: relative;
 }
+
+.card-header {
+  margin: 0 auto !important;
+}
+
 .card-image {
   grid-area: image;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-size: cover;
 }
+
+img {
+  border-radius: 35px;
+}
+
 .card-stats {
   grid-area: stats;
   display: grid;
@@ -72,9 +81,8 @@
   color: black;
 }
 .float-right {
-  color: red;
+  color: #000;
 }
-
 
 .btn-secondary a {
   color: #fff !important;
@@ -90,8 +98,9 @@
 }
 .btn-secondary {
   margin: 15px;
+  margin-left: 30px;
   padding: 10px 100px;
-  
+
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -130,21 +139,22 @@ select#exampleSelect.form-control {
   margin-left: 200px;
 }
 
-
 /* Signup Page */
 
-
-input#firstname.form-control,  input#lastname.form-control, 
-input#email.form-control, input#username.form-control, input#password.form-control, input#confirmPassword.form-control {
+input#firstname.form-control,
+input#lastname.form-control,
+input#email.form-control,
+input#username.form-control,
+input#password.form-control,
+input#confirmPassword.form-control {
   border: 3px solid;
   border-image-source: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
 
   border-image-slice: 1;
   border-radius: 5px;
-} 
+}
 
 .btn-danger {
-
   border: 3px solid;
   border-image-source: linear-gradient(
     to right,
@@ -156,24 +166,22 @@ input#email.form-control, input#username.form-control, input#password.form-contr
 }
 
 .btn-danger {
-
   background-image: linear-gradient(
     to right,
     #77a1d3 0%,
     #79cbca 51%,
     #77a1d3 100%
   );
-
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
-  #loginSection{
+  #loginSection {
     margin-left: 0px;
   }
-} 
- @media (max-width: 600px) {
+}
+@media (max-width: 600px) {
   .card {
     width: 100%;
     border-radius: 0;
   }
-} 
+}
