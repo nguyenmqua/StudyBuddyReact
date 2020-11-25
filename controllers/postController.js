@@ -24,6 +24,7 @@ module.exports = {
             populate: {path: "userId"}
         })
         .populate("userId")
+        .sort({createdAt: -1})
         .then(DBpost => res.json(DBpost))
         .catch(err => res.status(422).json(err));
     }

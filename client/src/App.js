@@ -120,6 +120,7 @@ const App = () => {
     data.append('file', imageSelected)
     data.append('upload_preset', 'gsthrmj6')
     setLoading(true)
+    console.log(data)
     const res = await fetch(
       'https://api.cloudinary.com/v1_1/studybuddycloud/image/upload',
       {

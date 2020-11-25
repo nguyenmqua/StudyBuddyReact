@@ -42,5 +42,9 @@ export default {
 
   getSearch: function (data) {
     return axios.get("/api/search/" + data)
+  },
+
+  getComments: function (id){
+    return axios.get("/api/comments/" +id)
   }
 };
