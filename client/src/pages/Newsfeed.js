@@ -74,11 +74,16 @@ function Newsfeed(props) {
               <Card key={post._id}>
                 <CardHeader className="header-background">
                   <CardImg
-                    className="card-image"
+                    className="card-image justify-content-center"
                     variant="top"
-                    src="../img/background.jpg"
+                    // src="../img/background.jpg"
                   />
-                  {/* <img src = {post.userId.Image} width="50px"></img> */}
+                  <img
+                    src={post.userId.Image}
+                    width="215px"
+                    justify-content="center"
+                    align-items="center"
+                  ></img>
                 </CardHeader>
 
                 <CardBody>

@@ -15,11 +15,8 @@ import {
   CardText,
   CardGroup,
 } from "reactstrap";
-
 import UserContext, { user } from "../utils/UserContext";
-import moment from "moment"
-
-
+import moment from "moment";
 
 function Message(props) {
   const { user } = useContext(UserContext);
@@ -83,20 +80,16 @@ function Message(props) {
               <CardText>{CurrentPost.location}</CardText>
             </CardBody>
             <CardFooter>
-
-            {moment(CurrentPost.date).startOf("minute").fromNow()} ago
-
+              {moment(CurrentPost.date).startOf("minute").fromNow()}
             </CardFooter>
           </Card>
         </Col>
       </Row>
 
       {DisplayComments.map((comment) => (
-
         <Row id="commentSection">
           <Col sm="3" md={{ size: 3 }}></Col>
           <Col id="comments" sm="6" md={{ size: 6 }}>
-
             {CurrentPostAuthor === comment.userId.username ? (
               <CardGroup className="float-right" key={comment._id}>
                 <Card className="bg-info clearfix">
@@ -104,10 +97,7 @@ function Message(props) {
                     <b>{comment.userId.username}</b>: {comment.comment}
                   </CardBody>
                   <CardFooter>
-
-
                     {moment().startOf("minute").fromNow(comment.date)}
-
                   </CardFooter>
                 </Card>
               </CardGroup>
@@ -119,10 +109,7 @@ function Message(props) {
                   </CardBody>
                   <CardFooter>
                     {" "}
-
-
                     {moment().startOf("minute").fromNow(comment.date)}
-
                   </CardFooter>
                 </Card>
               </CardGroup>
@@ -130,7 +117,6 @@ function Message(props) {
           </Col>
 
           <Col sm="3" md={{ size: 3 }}></Col>
-
         </Row>
       ))}
 
