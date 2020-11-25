@@ -16,9 +16,10 @@ import {
   CardGroup,
 } from "reactstrap";
 
-import UserContext, { user } from "../utils/userContext";
-
+import UserContext, { user } from "../utils/UserContext";
 import moment from "moment"
+
+
 
 function Message(props) {
   const { user } = useContext(UserContext);
@@ -83,19 +84,11 @@ function Message(props) {
       <Row>
         <Col sm="12" md={{ size: 12 }}>
           <Card key={CurrentPost._id}>
-            <CardHeader>
-               {CurrentPostAuthor}
-            </CardHeader>
-            <CardHeader>
-               Subject: {CurrentPost.subject}
-            </CardHeader>
+            <CardHeader>{CurrentPostAuthor}</CardHeader>
+            <CardHeader>Subject: {CurrentPost.subject}</CardHeader>
             <CardBody>
-              <CardTitle>
-                Notes:{CurrentPost.notes}
-              </CardTitle>
-              <CardTitle>
-                Group Size: {CurrentPost.group}
-              </CardTitle>
+              <CardTitle>Notes:{CurrentPost.notes}</CardTitle>
+              <CardTitle>Group Size: {CurrentPost.group}</CardTitle>
               <CardTitle>Location</CardTitle>
               <CardText>{CurrentPost.location}</CardText>
             </CardBody>
@@ -129,9 +122,12 @@ function Message(props) {
                 )}  
         
           </Col>
-      </Row>
-          ))}
-        
+
+          <Col sm="3" md={{ size: 3 }}></Col>
+
+        </Row>
+      ))}
+
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
           <Card>

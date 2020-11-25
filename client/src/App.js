@@ -9,7 +9,7 @@ import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import { Container } from "reactstrap";
-import UserContext from "./utils/userContext";
+import UserContext from "./utils/UserContext";
 
 const App = () => {
   const [userData, setUserData] = useState({

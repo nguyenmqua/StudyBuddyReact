@@ -10,7 +10,7 @@ import {
   Label,
   FormText,
 } from "reactstrap";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { get } from "mongoose";
