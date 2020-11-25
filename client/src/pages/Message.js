@@ -15,7 +15,7 @@ import {
   CardText,
   CardGroup,
 } from "reactstrap";
-import moment from "moment"
+import moment from "moment";
 import UserContext, { user } from "../utils/UserContext";
 
 function Message(props) {
@@ -71,55 +71,54 @@ function Message(props) {
       <Row>
         <Col sm="12" md={{ size: 12 }}>
           <Card key={CurrentPost._id}>
-            <CardHeader>
-               {CurrentPostAuthor}
-            </CardHeader>
-            <CardHeader>
-               Subject: {CurrentPost.subject}
-            </CardHeader>
+            <CardHeader>{CurrentPostAuthor}</CardHeader>
+            <CardHeader>Subject: {CurrentPost.subject}</CardHeader>
             <CardBody>
-              <CardTitle>
-                Notes:{CurrentPost.notes}
-              </CardTitle>
-              <CardTitle>
-                Group Size: {CurrentPost.group}
-              </CardTitle>
+              <CardTitle>Notes:{CurrentPost.notes}</CardTitle>
+              <CardTitle>Group Size: {CurrentPost.group}</CardTitle>
               <CardTitle>Location</CardTitle>
               <CardText>{CurrentPost.location}</CardText>
             </CardBody>
-            <CardFooter>{moment().startOf('hour').fromNow(CurrentPost.date)} ago</CardFooter>
+            <CardFooter>
+              {moment(CurrentPost.date).startOf("minute").fromNow()} ago
+            </CardFooter>
           </Card>
         </Col>
       </Row>
-    
-          {DisplayComments.map((comment) => (
-            <Row>
-              <Col sm="12" md={{ size: 12 }}>
-                {CurrentPostAuthor === comment.userId.username ? (
-            <CardGroup className="float-right"  key={comment._id}>
-              
-            <Card className="bg-info clearfix">
-              <CardBody className="float-right" >
-                <b>{comment.userId.username}</b>: {comment.comment}
-              </CardBody>
-              <CardFooter>{moment().startOf('hour').fromNow(comment.date)}</CardFooter>
-            </Card>
-            </CardGroup>
-              ) : (
-                <CardGroup className="float-left"  key={comment._id}>
-                <Card className ="float-left" >
-                <CardBody >
-                  <b>{comment.userId.username}</b>: {comment.comment}
-                </CardBody>
-                <CardFooter> {moment().startOf('hour').fromNow(comment.date)}</CardFooter>
-              </Card>
-                </CardGroup>
-                )}  
-        
+
+      {DisplayComments.map((comment) => (
+        <Row id="commentSection">
+          <Col sm="3" md={{ size: 3 }}></Col>
+          <Col id="comments" sm="6" md={{ size: 6 }}>
+            {CurrentPostAuthor === comment.userId.username ? (
+              <CardGroup className="float-right" key={comment._id}>
+                <Card className="bg-info clearfix">
+                  <CardBody className="float-right">
+                    <b>{comment.userId.username}</b>: {comment.comment}
+                  </CardBody>
+                  <CardFooter>
+                    {moment().startOf("minute").fromNow(comment.date)}
+                  </CardFooter>
+                </Card>
+              </CardGroup>
+            ) : (
+              <CardGroup className="float-left" key={comment._id}>
+                <Card className="float-left">
+                  <CardBody>
+                    <b>{comment.userId.username}</b>: {comment.comment}
+                  </CardBody>
+                  <CardFooter>
+                    {" "}
+                    {moment().startOf("minute").fromNow(comment.date)}
+                  </CardFooter>
+                </Card>
+              </CardGroup>
+            )}
           </Col>
-      </Row>
-          ))}
-        
+          <Col sm="3" md={{ size: 3 }}></Col>
+        </Row>
+      ))}
+
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
           <Card>
