@@ -6,7 +6,7 @@ import API from "../../utils/API";
 // import "./style.css";
 
 const SendReset = () => {
-  const { userData, handleInputChange, handleLogin } = useContext(UserContext);
+  // const { userData, handleInputChange, handleLogin } = useContext(UserContext);
   const [email, setEmail] = useState("")
   const handleFormSubmit = (event) => {
       console.log(email)

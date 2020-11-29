@@ -10,6 +10,8 @@ import TopNav from "./components/TopNav";
 import { Container } from "reactstrap";
 import UserContext from "./utils/UserContext";
 import SendReset from "./components/Forgot/sendReset"
+import resetPass from "./components/Forgot/resetForm";
+
 
 
 
@@ -88,7 +90,7 @@ const App = () => {
                 console.log(user.data);
                 setFailureMessage(user.data);
               }
-            }
+            } 
           })
           .catch((error) => {
             console.log(error);
@@ -149,8 +151,13 @@ const App = () => {
                 render={() => <Auth action="login" />}
               />
               <Route
+                
+                path="/reset/"
+                component = {resetPass}
+              />
+              <Route
                 exact
-                path="/reset"
+                path="/pass"
                 component = {SendReset}
               />
               <Route

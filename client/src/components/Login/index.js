@@ -40,7 +40,7 @@ const Login = () => {
           <Link to="/signup">Don't have an account? Sign up here</Link>
         </p>
         <p className="resetLink">
-          <Link to="/sendReset">Forgot password?</Link>
+          <Link to="/reset">Forgot password?</Link>
         </p>
       </Form>
     </div>

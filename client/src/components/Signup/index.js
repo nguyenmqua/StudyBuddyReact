@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import {
   Button,
   Form,
@@ -11,7 +12,12 @@ import {
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
 
+// import userData from "../../utils/UserContext";
+// import { sendMail } from "../../../../controllers/nodemailerController";
+
 const Signup = () => {
+  // const nodemailer = require('nodemailer');
+  // // const sendgridTransport = require('nodemailer-sendgrid-transport')
   const {
     userData,
     handleInputChange,
@@ -160,6 +166,7 @@ const Signup = () => {
 
   // checks if 2 password fields match
   const checkConfirmPassword = () => {
+    
     if (confirmPassword.length === 0) {
       setIsConfirmed(false);
       setErrorMessage({ ...errorMessage, confirmPassword: "" });
@@ -176,7 +183,47 @@ const Signup = () => {
         confirmPassword: "Passwords must match",
       });
     }
-  };
+  }
+
+  // const welcomeMail = (userData) => {
+  //   transporter = nodemailer.createTransport({
+  //     host: 'smtp.gmail.com',
+  //     port: 587,
+  //     auth: {
+  //         user: 'ali.hernandez92@gmail.com' ,
+  //         pass: 'Future80808!',
+  //     }
+  // });
+
+  // Message object
+  // let message = {
+  //     from: 'German <nodetest30@gmail.com>',
+
+  //     // Comma separated list of recipients
+  //     to: userData.email,
+  //     bcc: '',
+
+  //     // Subject of the message
+  //     subject: 'Welcome to StuddyBuddy! Connect with students around your area to start your learning journey!',
+
+  //     // plaintext body
+  //     text: 'Welcome to Studdybuddy!',
+      
+
+  //     // HTML body
+  //     html:
+  //         '<p>Welcome to StuddyBuddy! Connect with students around your area to start your learning journey!<p>'
+
+      
+  // };
+
+  // let info = transporter.sendMail(message);
+  // res.json(info)
+  // console.log('Message sent successfully as %s', info.messageId);
+
+
+
+  
 
   return (
     <div>
@@ -300,7 +347,7 @@ const Signup = () => {
         </p>
       </Form>
     </div>
-  );
-};
+  )}
+
 
 export default Signup;

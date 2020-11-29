@@ -29,6 +29,8 @@ const usersSchema = new Schema({
     unique: false,
     required: true,
   },
+  resetToken: String,
+  expireToken: Date,
   admin: {
     type: Boolean,
     unique: false,
