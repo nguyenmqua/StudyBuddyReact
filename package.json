@@ -31,6 +31,7 @@
     "express-jwt": "^6.0.0",
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
+    "jsonwebtoken": "^8.5.1",
     "memorystore": "^1.6.4",
     "mongoose": "^5.3.16",
     "morgan": "^1.10.0",

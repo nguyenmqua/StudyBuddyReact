@@ -1,19 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, {useState} from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
-import UserContext from "../../utils/UserContext";
+// import { Link } from "react-router-dom";
+// import UserContext from "../../utils/UserContext";
 // import API from "../../utils/API";
 
 
-const reset = () => {
+function ResetPass() {
 //   const { userData, handleInputChange, handleLogin } = useContext(UserContext);
-//   const [pass, setPass] = useState("");
-//   const handleFormSubmit = (event) => {
-//       console.log(email)
-//     API.sendMail({email:email}).then(res => {
-//         console.log(res)
+const [state, setState] = useState("")
+  const [pass, setPass] = useState({
+    pass: "",
+    con: ""
+  });
+  const handleFormSubmit = (event) => {
+      // console.log(email)
+    // API.sendMail({email:email}).then(res => {
+    //     console.log(res)
     // })
-//   }
+  }
   return (
     <div>
       <h2 className="resetTitle">Reset Password</h2>
@@ -49,4 +53,4 @@ const reset = () => {
   );
 };
 
-export default reset;
+export default ResetPass;

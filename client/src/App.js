@@ -11,6 +11,7 @@ import { Container } from "reactstrap";
 import UserContext from "./utils/UserContext";
 import SendReset from "./components/Forgot/sendReset"
 import resetPass from "./components/Forgot/resetForm";
+import withAuth from "./components/withAuth/withAuth";
 
 
 
@@ -153,7 +154,7 @@ const App = () => {
               <Route
                 
                 path="/reset/"
-                component = {resetPass}
+                component = {withAuth(resetPass)}
               />
               <Route
                 exact

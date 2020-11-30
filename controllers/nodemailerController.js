@@ -1,7 +1,7 @@
 let nodemailer = require("nodemailer");
 const { addListener } = require("nodemon");
 require("dotenv").config();
-var jwt = require("express-jwt");
+const jwt = require('jsonwebtoken');
 
 // Issue token
 // const payload = { email };
@@ -12,23 +12,18 @@ var jwt = require("express-jwt");
 // console.log(token);
 
 module.exports = {
-  sendJWT: function (req, res) {
-    const payload = { email };
-    const token = jwt.sign(payload, secret, {
-      expiresIn: "1h",
-    });
-    res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-    console.log(token);
+//   sendJWT: function (req, res) {
+//     const payload = { email };
+//     const token = jwt.sign(payload, secret, {
+//       expiresIn: "1h",
+//     });
+//     res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+//     console.log(token);
 
-    res.json(jwt({ secret: "shhhhhhared-secret" }));
-  },
+    // res.json(jwt({ secret: "shhhhhhared-secret" }));
+//   },
   sendMail: async function (req, res) {
-    // Create a SMTP transporter object
-    // let transporter = nodemailer.createTransport({
-    //     sendmail: true,
-    //     newline: 'windows',
-    //     logger: false
-    // });
+    
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
@@ -37,7 +32,12 @@ module.exports = {
         pass: "Future80808!",
       },
     });
+ const payload = {email: req.body.email};
 
+const secret = 'mysecretsshhh';
+   const token = jwt.sign(payload, secret, {
+     expiresIn: '1h'
+   });
     // Message object
     let message = {
       from: "no-reply@studdy-buddy.app",
@@ -55,7 +55,7 @@ module.exports = {
       // HTML body
       html:
         "<p>Hello here is your password reset link!" +
-        `<p><link>http://localhost:3000/reset/${token}</p>`,
+        `<p><link>http://localhost:3000/reset/${req.body.email}/${token}</p>`,
 
       // // An array of attachments
       // attachments: [
@@ -92,4 +92,7 @@ module.exports = {
     res.json(info);
     console.log("Message sent successfully as %s", info.messageId);
   },
+  checkToken: function (req, res) {
+    res.sendStatus(200);  
+  }
 };
