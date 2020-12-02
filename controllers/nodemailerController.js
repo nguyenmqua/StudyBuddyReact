@@ -56,36 +56,6 @@ const secret = 'mysecretsshhh';
       html:
         "<p>Hello here is your password reset link!" +
         `<p><link>http://localhost:3000/reset/${req.body.email}/${token}</p>`,
-
-      // // An array of attachments
-      // attachments: [
-      //     // String attachment
-      //     {
-      //         filename: 'notes.txt',
-      //         content: 'Some notes about this e-mail',
-      //         contentType: 'text/plain' // optional, would be detected from the filename
-      //     },
-
-      //     // Binary Buffer attachment
-      //     {
-      //         filename: 'image.png',
-      //         content: Buffer.from(
-      //             'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
-      //                 '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
-      //                 'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
-      //             'base64'
-      //         ),
-
-      //         cid: 'note@example.com' // should be as unique as possible
-      //     },
-
-      // File Stream attachment
-      // {
-      //     filename: 'nyan cat ✔.gif',
-      //     path: __dirname + '/assets/nyan.gif',
-      //     cid: 'nyan@example.com' // should be as unique as possible
-      // }
-      // ]
     };
 
     let info = await transporter.sendMail(message);
