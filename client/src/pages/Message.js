@@ -29,7 +29,7 @@ function Message(props) {
   const { id } = useParams();
   useEffect(() => {
     loadPost();
-    loadComments();
+    loadComments();git
   }, []);
 
   function loadComments() {
@@ -66,8 +66,7 @@ function Message(props) {
         userId: user._id,
         postId: id,
       });
-      console.log(res);
-      window.location.href = "/post/" + id;
+      loadComments()
     } catch (error) {
       console.log(
         "There was an error processing your results, please try again",
