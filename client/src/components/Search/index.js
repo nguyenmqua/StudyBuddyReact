@@ -9,6 +9,7 @@ const Search = ({submitSearch, setSearch}) => {
                 <Label for="exampleAddress">Search for Subject</Label>
                 <Input type="text" name="search" id="Search" placeholder="Search Subject" onChange={(e)=>setSearch(e.target.value)}/>
             </FormGroup>
+            
             <Button onClick={submitSearch}> Submit</Button>
         </Form>
     )

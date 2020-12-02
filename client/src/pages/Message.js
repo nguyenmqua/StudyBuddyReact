@@ -29,7 +29,7 @@ function Message(props) {
   const { id } = useParams();
   useEffect(() => {
     loadPost();
-    loadComments();git
+    loadComments();
   }, []);
 
   function loadComments() {
