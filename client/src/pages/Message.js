@@ -84,7 +84,7 @@ function Message(props) {
             <CardHeader>{CurrentPostAuthor}</CardHeader>
             <CardHeader>Subject: {CurrentPost.subject}</CardHeader>
             <CardBody>
-              <CardTitle>Notes:{CurrentPost.notes}</CardTitle>
+              <CardTitle>Notes: {CurrentPost.notes}</CardTitle>
               <CardTitle>Group Size: {CurrentPost.group}</CardTitle>
               <CardTitle>Location</CardTitle>
               <CardText>{CurrentPost.location}</CardText>
