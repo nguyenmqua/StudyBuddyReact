@@ -2,16 +2,10 @@ import React, {useState, useContext} from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 // import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 
 
 function ResetPass() {
-//   const { userData, handleInputChange, handleLogin } = useContext(UserContext);
-// const [state, setState] = useState("")
-//   const [pass, setPass] = useState({
-//     pass: "",
-//     con: ""
-//   });
 
   const {
     userData,
@@ -21,6 +15,9 @@ function ResetPass() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [reset, setReset] = useState("");
+  
+  
   
 
   const handleConfirmPassword = (event) => {
@@ -70,39 +67,55 @@ function ResetPass() {
           confirmPassword: "Passwords must match",
         });
       }
-    }
+    };
+
+    const handleResetSubmit = (event) => {
+      event.preventDefault();
+      console.log(reset);
+      const data= {
+        password: this.reset,
+        confirmPassword: this.confirmPassword
+      }
+      
+    API.reset({reset:data}).then(res => {
+        console.log(res)
+    })
+  }
   return (
     <div>
       <h2 className="resetTitle">Reset Password</h2>
       <hr />
-      <Form>
+      <Form onSubmit={handleResetSubmit}>
         <FormGroup>
-          <Label for="email">New password:</Label>
+          <Label for="resetPassword">New password:</Label>
           <Input
             type="text"
             name="password"
             id="password"
             placeholder="password"
-            value={userData.password}
-            onChange={handleInputChange}
+            value={reset}
+            onChange={event => this.reset = event.target.value}
             onBlur={checkPassword}
             valid={validPassword}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="email">Confirm new password:</Label>
+          <Label for="confirmResetPassword">Confirm new password:</Label>
           <Input
             type="text"
             name="password"
             id="password"
             placeholder="password"
             value={confirmPassword}
-            onChange={handleConfirmPassword}
+            onChange={event => this.confirmPassword = event.target.value}
             onKeyUp={checkConfirmPassword}
             valid={isConfirmed}
           />
         </FormGroup>
-        <Button color="primary" block>
+        <Button 
+        color="primary" 
+        // onSubmit={handleResetSubmit}
+        >
           Confirm New Password
         </Button>
       </Form>
