@@ -28,7 +28,6 @@ function Newsfeed(props) {
   useEffect(() => {
     loadPost();
     searchSubject();
-    console.log("subjects: ", subjects);
   }, []);
 
   function handleInputChange(event) {
@@ -36,8 +35,7 @@ function Newsfeed(props) {
   }
 
   function searchSubject() {
-    API.searchSubject({ search: search }).then((res) => {
-      console.log(res.data);
+    API.searchSubject().then((res) => {
       setSubjects(res.data);
     });
   }

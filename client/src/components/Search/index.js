@@ -4,9 +4,9 @@ import API from "../../utils/API";
 
 const Search = ({ submitSearch, subjects, search, handleInputChange }) => {
   return (
-    <Form>
-      <FormGroup>
-        <Label for="exampleAddress">Search for Subject</Label>
+    <form className="search">
+      <div className="form-group">
+        <label htmlFor="search">Search Subject</label>
         <input
           className="form-control"
           type="text"
@@ -19,14 +19,14 @@ const Search = ({ submitSearch, subjects, search, handleInputChange }) => {
         />
         <datalist id="searches">
           {subjects.map((subject) => (
-            <option value={subject._id} key={subject._id}>
-              {subject._id}
+            <option value={subject.subject} key={subject._id}>
+              {subject.subject}
             </option>
           ))}
         </datalist>
-      </FormGroup>
       <Button onClick={submitSearch}> Submit</Button>
-    </Form>
+      </div>
+    </form>
   );
 };
 

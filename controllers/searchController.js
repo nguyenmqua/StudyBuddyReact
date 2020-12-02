@@ -13,7 +13,7 @@ module.exports = {
 
   subject: function (req, res) {
     console.log(req.body);
-    db.Post.find({ subject: req.params.id })
+    db.Post.find({})
       .then((DBpost) => {
         console.log(DBpost);
         res.json(DBpost);

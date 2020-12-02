@@ -48,7 +48,7 @@ export default {
     return axios.get("/api/search/" + data);
   },
 
-  searchSubject: function (data) {
-    return axios.put("/api/search/", data);
+  searchSubject: function () {
+    return axios.get("/api/search/");
   },
 };
