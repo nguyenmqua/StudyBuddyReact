@@ -3,15 +3,22 @@ import { Link } from "react-router-dom";
 import API from "../utils/API"
 import { Container, Row, Col, Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText  } from 'reactstrap';
 import UserContext from '../utils/UserContext';
+import Search from '../components/Search'
 
 function Newsfeed(props){
     const { loggedIn } = useContext(UserContext);
     const [AllPost, setAllPost] = useState([])
-  
+    const [search, setSearch] = useState("");
   
     useEffect(() => {
       loadPost()
     }, [])
+
+    const submitSearch = () => {
+        API.getSearch(search)
+            .then((res) =>{setAllPost(res.data)})
+            .catch((err) => console.log(err))
+    }
 
     function loadPost(){
         API.newsfeed()
@@ -31,6 +38,7 @@ function Newsfeed(props){
             {/* {loggedIn ? ( */}
                 <Col sm="12" md={{ size: 8, offset: 2 }} >
                     <h1>newsfeed</h1>
+                    <Search setSearch={setSearch} submitSearch={submitSearch} />
                     {AllPost.map(post => (
                         <Card key={post._id}>
                             <CardHeader> "User:" {post.userId.username}    "Subject": {post.subject}
