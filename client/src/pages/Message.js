@@ -124,13 +124,11 @@ function Message(props) {
                   </CardFooter>
                 </Card>
               </CardGroup>
-            )}
-
-            <CardFooter>{moment(CurrentPost.date).format('MMMM Do YYYY, h:mm:ss a')} ago</CardFooter>
-          </Card>
+              )
+            };
         </Col>
       </Row>
-    
+      ))}
           {DisplayComments.map((comment) => (
             <Row key={comment._id}>
               <Col sm="12" md={{ size: 12 }}>
