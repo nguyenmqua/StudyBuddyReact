@@ -109,14 +109,12 @@ function Newsfeed(props) {
                 </CardHeader>
 
                 <CardBody>
-                  <CardTitle>
-                    <CardText className="card-text">
-                      <h2>{post.userId.username}</h2>
-                    </CardText>
+                  <CardTitle className="card-text">
+                      <h2>{post.userId.username}</h2>                  
                   </CardTitle>
                   <CardTitle>
                     <CardText className="card-text">
-                      <p>{post.notes}</p>
+                      {post.notes}
                     </CardText>
                   </CardTitle>
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import API from "../../utils/API";
+import {Button } from "reactstrap";
 
 const Search = ({ submitSearch, subjects, search, handleInputChange }) => {
   return (

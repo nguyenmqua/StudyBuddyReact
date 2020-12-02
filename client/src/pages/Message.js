@@ -15,7 +15,7 @@ import {
   CardText,
   CardGroup,
 } from "reactstrap";
-import UserContext, { user } from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 import moment from "moment";
 
 function Message(props) {
@@ -27,9 +27,10 @@ function Message(props) {
   // When this component mounts, grab the book with the _id of props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   const { id } = useParams();
+  
   useEffect(() => {
     loadPost();
-    loadComments();git
+    loadComments();
   }, []);
 
   function loadComments() {

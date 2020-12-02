@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import API from "../utils/API";
 import {
   Container,
@@ -13,7 +13,7 @@ import {
 import UserContext from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import "./style.css";
-import { get } from "mongoose";
+
 
 function Member(props) {
   const { user, loggedIn } = useContext(UserContext);

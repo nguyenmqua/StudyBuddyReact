@@ -24,8 +24,8 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
-  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
+ 
   useEffect(() => {
     isLoggedIn();
   }, []);
@@ -116,7 +116,6 @@ const App = () => {
   };
 
   const uploadImage = async (e) => {
-    const files = e.target.files;
     const data = new FormData();
     data.append("file", imageSelected);
     data.append("upload_preset", "gsthrmj6");
