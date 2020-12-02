@@ -29,7 +29,7 @@ function Message(props) {
   const { id } = useParams();
   useEffect(() => {
     loadPost();
-    loadComments()
+    loadComments();
   }, []);
 
   function loadComments() {
@@ -97,70 +97,42 @@ function Message(props) {
         </Col>
       </Row>
 
-      {DisplayComments.map((comment) => (
-        <Row id="commentSection">
-          <Col sm="3" md={{ size: 3 }}></Col>
-          <Col id="comments" sm="6" md={{ size: 6 }}>
-            {CurrentPostAuthor === comment.userId.username ? (
-              <CardGroup className="float-right" key={comment._id}>
-                <Card className="bg-info clearfix">
-                  <CardBody className="float-right">
-                    <b>{comment.userId.username}</b>: {comment.comment}
-                  </CardBody>
-                  <CardFooter>
-                    {moment().startOf("minute").fromNow(comment.date)}
-                  </CardFooter>
-                </Card>
-              </CardGroup>
-            ) : (
-              <CardGroup className="float-left" key={comment._id}>
-                <Card className="float-left">
-                  <CardBody>
-                    <b>{comment.userId.username}</b>: {comment.comment}
-                  </CardBody>
-                  <CardFooter>
-                    {" "}
-                    {moment().startOf("minute").fromNow(comment.date)}
-                  </CardFooter>
-                </Card>
-              </CardGroup>
-            )}
+      <div id="messageBody">
+        {DisplayComments.map((comment) => (
+          <Row key={comment._id}>
+            <Col sm="2" md={{ size: 2 }}></Col>
 
-            <CardFooter>{moment(CurrentPost.date).format('MMMM Do YYYY, h:mm:ss a')} ago</CardFooter>
-          </Card>
-        </Col>
-      </Row>
-    
-          {DisplayComments.map((comment) => (
-            <Row key={comment._id}>
-              <Col sm="12" md={{ size: 12 }}>
-                {CurrentPostAuthor === comment.userId.username ? (
-            <CardGroup className="float-right" >
-
-            <Card className="bg-info clearfix">
-              <CardBody className="float-right" >
-                <b>{comment.userId.username}</b>: {comment.comment}
-              </CardBody>
-              <CardFooter>{moment(comment.date).format('MMMM Do YYYY, h:mm:ss a')}</CardFooter>
-            </Card>
-            </CardGroup>
-              ) : (
-                <CardGroup className="float-left"  key={comment._id}>
-                <Card className ="float-left" >
-                <CardBody >
-                  <b>{comment.userId.username}</b>: {comment.comment}
-                </CardBody>
-                <CardFooter> {moment(comment.date).format('MMMM Do YYYY, h:mm:ss a')}</CardFooter>
-              </Card>
+            <Col sm="8" md={{ size: 8 }}>
+              {CurrentPostAuthor === comment.userId.username ? (
+                <CardGroup className="float-right">
+                  <Card className="bg-info clearfix">
+                    <CardBody className="float-right">
+                      <b>{comment.userId.username}</b>: {comment.comment}
+                    </CardBody>
+                    <CardFooter>
+                      {moment(comment.date).format("MMMM Do YYYY, h:mm a")}
+                    </CardFooter>
+                  </Card>
                 </CardGroup>
-                )}  
-        
+              ) : (
+                <CardGroup className="float-left" key={comment._id}>
+                  <Card className="float-left">
+                    <CardBody>
+                      <b>{comment.userId.username}</b>: {comment.comment}
+                    </CardBody>
+                    <CardFooter>
+                      {" "}
+                      {moment(comment.date).format("MMMM Do YYYY, h:mm a")}
+                    </CardFooter>
+                  </Card>
+                </CardGroup>
+              )}
+            </Col>
 
-          </Col>
-
-          <Col sm="3" md={{ size: 3 }}></Col>
-        </Row>
-      ))}
+            <Col sm="2" md={{ size: 2 }}></Col>
+          </Row>
+        ))}
+      </div>
 
       <Row>
         <Col sm="12" md={{ size: 8, offset: 2 }}>
@@ -179,5 +151,4 @@ function Message(props) {
     </Container>
   );
 }
-
 export default Message;
