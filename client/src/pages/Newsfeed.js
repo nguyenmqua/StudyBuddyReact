@@ -24,15 +24,27 @@ function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
   const [search, setSearch] = useState("");
+  const [subjects, setSubjects] = useState([]);
   useEffect(() => {
     loadPost();
+    searchSubject();
   }, []);
+
+  function handleInputChange(event) {
+    setSearch(event.target.value);
+  }
+
+  function searchSubject() {
+    API.searchSubject().then((res) => {
+      setSubjects(res.data);
+    });
+  }
 
   function loadPost() {
     API.newsfeed()
       .then((res) => {
-        console.log(res.data)
-        setAllPost(res.data)})
+        setAllPost(res.data);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -45,6 +57,7 @@ function Newsfeed(props) {
   const submitSearch = () => {
     API.getSearch(search)
       .then((res) => {
+        console.log(res.data);
         setAllPost(res.data);
       })
       .catch((err) => console.log(err));
@@ -72,6 +85,13 @@ function Newsfeed(props) {
         {loggedIn ? (
           <Col sm="12" md={{ size: 5, offset: 2 }}>
             <MotiveQuote />
+            <Search
+              setSearch={setSearch}
+              submitSearch={submitSearch}
+              search={search}
+              subjects={subjects}
+              handleInputChange={handleInputChange}
+            />
             {AllPost.map((post) => (
               <Card key={post._id}>
                 <CardHeader className="header-background">
@@ -121,8 +141,8 @@ function Newsfeed(props) {
                     </div>
                   </div>
                 </CardBody>
-                <CardFooter className ="footer-background">
-                  {moment(post.date).format('MMMM Do YYYY, h:mm:ss a')}
+                <CardFooter className="footer-background">
+                  {moment(post.date).format("MMMM Do YYYY, h:mm:ss a")}
                   <Button
                     className="float-right"
                     close
