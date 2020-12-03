@@ -47,7 +47,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/studybuddy', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false,
 });
+
+mongoose.set('useFindAndModify', false);
 
 // Start the API server
 app.listen(PORT, (error) => {
