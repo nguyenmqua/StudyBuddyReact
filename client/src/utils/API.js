@@ -4,11 +4,15 @@ export default {
   sendMail: function (email) {
     return axios.post('/sendMail', email)
   },
+  
+  // sendWelcome: function (email) {
+  //   return axios.post('/sendWelcome', email)
+  // },
 
   reset: function (data) {
-    return axios.post('/reset', data)
+    return axios.post('/api/users', data)
   },
-  
+
   login: function (loginInfo) {
     return axios.post('/api/users/login', loginInfo);
   },

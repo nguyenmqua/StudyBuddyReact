@@ -11,13 +11,12 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
+import API from "../../utils/API";
 
 // import userData from "../../utils/UserContext";
 // import { sendMail } from "../../../../controllers/nodemailerController";
 
 const Signup = () => {
-  // const nodemailer = require('nodemailer');
-  // // const sendgridTransport = require('nodemailer-sendgrid-transport')
   const {
     userData,
     handleInputChange,
@@ -185,44 +184,13 @@ const Signup = () => {
     }
   }
 
-  // const welcomeMail = (userData) => {
-  //   transporter = nodemailer.createTransport({
-  //     host: 'smtp.gmail.com',
-  //     port: 587,
-  //     auth: {
-  //         user: '' ,
-  //         pass: '',
-  //     }
-  // });
-
-  // Message object
-  // let message = {
-  //     from: 'German <nodetest30@gmail.com>',
-
-  //     // Comma separated list of recipients
-  //     to: userData.email,
-  //     bcc: '',
-
-  //     // Subject of the message
-  //     subject: 'Welcome to StuddyBuddy! Connect with students around your area to start your learning journey!',
-
-  //     // plaintext body
-  //     text: 'Welcome to Studdybuddy!',
-      
-
-  //     // HTML body
-  //     html:
-  //         '<p>Welcome to StuddyBuddy! Connect with students around your area to start your learning journey!<p>'
-
-      
-  // };
-
-  // let info = transporter.sendMail(message);
-  // res.json(info)
-  // console.log('Message sent successfully as %s', info.messageId);
-
-
-
+  // const [email, setEmail] = useState("")
+  // const handleFormSubmit = (event) => {
+  //     console.log(email)
+  //   API.sendWelcome({email:email}).then(res => {
+  //       console.log(res)
+  //   })
+  // }
   
 
   return (
@@ -230,7 +198,7 @@ const Signup = () => {
       <h2 className="loginTitle">Signup</h2>
       <hr />
       {failureMessage ? <Alert type="danger">{failureMessage}</Alert> : <p></p>}
-      <Form>
+      <Form >
         <FormGroup>
           <Label for="firstname">First Name</Label>
           <Input

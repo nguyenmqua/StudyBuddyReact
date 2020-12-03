@@ -153,7 +153,7 @@ const App = () => {
               />
               <Route
                 
-                path="/reset/"
+                path="/reset"
                 component = {withAuth(resetPass)}
               />
               <Route

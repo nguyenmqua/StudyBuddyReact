@@ -72,12 +72,12 @@ function ResetPass() {
     const handleResetSubmit = (event) => {
       event.preventDefault();
       console.log(reset);
-      const data= {
-        password: this.reset,
-        confirmPassword: this.confirmPassword
+      const updateData= {
+        password: reset,
+        confirmPassword: reset
       }
       
-    API.reset({reset:data}).then(res => {
+    API.reset({reset:updateData}).then(res => {
         console.log(res)
     })
   }
@@ -94,7 +94,7 @@ function ResetPass() {
             id="password"
             placeholder="password"
             value={reset}
-            onChange={event => this.reset = event.target.value}
+            onChange={event => setReset(event.target.value)}
             onBlur={checkPassword}
             valid={validPassword}
           />
@@ -106,15 +106,15 @@ function ResetPass() {
             name="password"
             id="password"
             placeholder="password"
-            value={confirmPassword}
-            onChange={event => this.confirmPassword = event.target.value}
+            value={reset}
+            onChange={checkConfirmPassword}
             onKeyUp={checkConfirmPassword}
             valid={isConfirmed}
           />
         </FormGroup>
         <Button 
         color="primary" 
-        // onSubmit={handleResetSubmit}
+        onSubmit={handleResetSubmit}
         >
           Confirm New Password
         </Button>
