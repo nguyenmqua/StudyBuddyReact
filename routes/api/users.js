@@ -52,6 +52,30 @@ router.post('/signup', (req, res, next) => {
   });
 });
 
+// router.put('/user', (req, res, next) => {
+//   db.User.findOneandUpdate({ id: req.user.id }, (err, user) => {
+//     if (err) throw err;
+//     if (!user) {
+//       console.log('error user');
+//       return res.json('error user');
+//     }
+//     if (user) {
+//       db.User.findOne({email: user.email}, (error, user) => {
+//         if (error) throw error;
+      
+      
+//           user.password = newUser.generateHash(req.body.password);
+//           user.save((error2) => {
+//             if (error2) throw error2;
+//             console.log('user saved!');
+//             res.redirect(307, '/api/users/login');
+//           });
+//         }
+//       });
+//     }
+//   });
+// }); 
+
 router.get('/unauthorized', (req, res, next) => {
   res.json({
     error: req.flash('error'),
