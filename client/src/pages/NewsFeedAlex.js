@@ -28,22 +28,13 @@ function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
   const [search, setSearch] = useState("");
-  const [subjects, setSubjects] = useState([]);
   useEffect(() => {
     loadPost();
-    searchSubject();
   }, []);
-  function handleInputChange(event) {
-    setSearch(event.target.value);
-  }
-  function searchSubject() {
-    API.searchSubject().then((res) => {
-      setSubjects(res.data);
-    });
-  }
   function loadPost() {
     API.newsfeed()
       .then((res) => {
+        console.log(res.data);
         setAllPost(res.data);
       })
       .catch((err) => console.log(err));
@@ -56,12 +47,10 @@ function Newsfeed(props) {
   const submitSearch = () => {
     API.getSearch(search)
       .then((res) => {
-        console.log(res.data);
         setAllPost(res.data);
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <Container>
       <Row>
