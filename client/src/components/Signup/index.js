@@ -29,13 +29,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
 
-  const [email, setEmail] = useState("")
-  const handleFormSubmit = (event) => {
-    console.log(email)
-  API.sendMail({email:email}).then(res => {
-      console.log(res)
-  })
-}
+ 
 
   useEffect(() => {
     console.log(errorMessage);
@@ -209,7 +203,6 @@ const Signup = () => {
             placeholder="email@email.com"
             value={userData.email}
             onChange={handleInputChange}
-            onSubmit={handleFormSubmit}
             onBlur={checkEmail}
             valid={validEmail}
           />
@@ -276,7 +269,7 @@ const Signup = () => {
         validUserName &&
         validPassword &&
         isConfirmed ? (
-          <Button onClick={handleFormSubmit} color="success" block>
+          <Button onClick={uploadImage} color="success" block>
             Signup
           </Button>
         ) : (

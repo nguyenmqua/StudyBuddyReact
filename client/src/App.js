@@ -114,7 +114,7 @@ const App = () => {
       });
     }
   };
-
+  const [email, setEmail] = useState("")
   const uploadImage = async (e) => {
     const data = new FormData();
     data.append("file", imageSelected);
@@ -129,6 +129,10 @@ const App = () => {
     );
     const file = await res.json();
     handleSignup(file.secure_url);
+      console.log(email)
+    API.sendMail({email:email}).then(res => {
+        console.log(res)
+    })
   };
 
   // const setUpProfilePic = (image) => {
