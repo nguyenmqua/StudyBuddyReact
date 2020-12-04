@@ -14,11 +14,16 @@ import {
   CardTitle,
   CardText,
   CardImg,
+  CardGroup,
 } from "reactstrap";
 import UserContext from "../utils/UserContext";
 import MotiveQuote from "../components/MotiveQuote";
 import "./Auth/style.css";
 import Search from "../components/Search";
+import {FaInstagram} from "react-icons/fa";
+import {FaTwitter} from "react-icons/fa";
+import {FaLinkedinIn} from "react-icons/fa";
+import {FaGithub} from "react-icons/fa";
 
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
@@ -64,7 +69,7 @@ function Newsfeed(props) {
   };
 
   return (
-    <Container>
+    <Container >
       <Row>
         {!loggedIn ? (
           <Col sm="12" md={{ size: 8, offset: 2 }}>
@@ -81,10 +86,91 @@ function Newsfeed(props) {
           ""
         )}
       </Row>
+      
+      {loggedIn ? (
       <Row>
-        {loggedIn ? (
-          <Col sm="12" md={{ size: 5, offset: 2 }}>
+      <Col xs="auto">
             <MotiveQuote />
+
+      </Col>
+      
+      <Row xs="3">
+      {AllPost.map((post) => (
+        <div>
+        <Card key={post._id}>
+        <Row className ="delete_button">
+          <Col>
+          <Button className="float-right"
+            close
+            onClick={() => deletePost(post._id)}
+          />
+          </Col>
+        </Row>
+        
+          <CardImg className="Image"
+          />
+          <img className ="card__image"
+            src={post.userId.Image}
+            width="215px"
+            justify-content="center"
+            align-items="center"
+          ></img>
+        
+        <CardBody className="grid-child-posts">
+        <CardTitle>
+          <CardText className="card__name">
+            <p>{post.userId.username}</p>
+          </CardText>
+          </CardTitle>
+          <CardTitle>
+          <Row xs="1">
+            <Col>
+              <div className="value">Buddies</div>
+              <div className="type">{post.group}</div>
+            </Col>
+            <Col>
+              <div className="value">Subject</div>
+              <div className="type">{post.subject}</div>
+            </Col>
+          </Row>
+          </CardTitle>
+          <Row>
+            <Col>
+              <ul class="social-icons">
+                <li><a href="#"><i className="fa fa-instagram"><FaInstagram/></i></a></li>
+                <li><a href="#"><i className="fa fa-twitter"><FaTwitter/></i></a></li>
+                <li><a href="#"><i className="fa fa-linkedin"><FaLinkedinIn/></i></a></li>
+                <li><a href="#"><i className="fa fa-github"><FaGithub/></i></a></li>
+              </ul>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+            <Button className="Connect-Button">
+            <Link to={"/post/" + post._id}>
+              <strong>Lets Link Up!</strong>
+            </Link>
+            </Button>
+            </Col>
+          </Row>
+          <CardFooter className ="footer-background">
+            <Col className="Date">
+            {moment(post.date).format('MMMM Do YYYY')}
+            </Col>
+            <Col className="Location">
+            {post.location}
+            </Col>
+            
+          </CardFooter> 
+        </CardBody>
+        </Card>
+        
+        </div>
+
+      ))}
+      </Row>
+      </Row>
+
             <Search
               setSearch={setSearch}
               submitSearch={submitSearch}
@@ -118,11 +204,17 @@ function Newsfeed(props) {
                     </CardText>
                   </CardTitle>
 
-                  <Button className="Connect-Button">
-                    <Link to={"/post/" + post._id}>
-                      <strong>Lets Link Up!</strong>
-                    </Link>
-                  </Button>
+
+    ) : (
+      <Row>
+
+
+        <Col>
+        <div id="loginSection">
+          <h4> Log in to view this page </h4>
+          <Link to="/login">
+            <Button> Login </Button>
+          </Link>
 
                   <div className="card-stats">
                     <div className="stat-border">
@@ -156,9 +248,12 @@ function Newsfeed(props) {
             <Link to="/login">
               <Button> Login </Button>
             </Link>
+
           </div>
-        )}
+        </Col>
       </Row>
+
+    )}
     </Container>
   );
 }

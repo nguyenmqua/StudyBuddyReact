@@ -4,72 +4,80 @@
   margin: 25px;
   padding: 5px;
   -webkit-box-shadow: 0px 0px 6px 4px #a1c4fd;
-  box-shadow: 0px 0px 6px 4px #a1c4fd;
-  cursor: pointer;
-  flex-wrap: wrap;
-}
-.header-background {
-  background-color: white;
-}
+  box-shadow: 0px 0px 6px 4px #b5cbd6;
+  cursor: pointer; 
+  background-color:#d8e3e9;
+  border-radius: 25px;
+
+} 
+
 .footer-background {
-  background-color: white;
-  flex-wrap: wrap;
+  background-color: #cadfe5; 
+}
+.Date {
+  margin: 5px;
+  text-align: center;
+  padding:10px;
+  border:0;
+  box-shadow:0 15px 15px 4px rgba(0,0,0,0.06);
+  font-family: 'Baloo Paaji 2', cursive;
+}
+
+.Note {
+  text-align: center;
+  padding:10px;
+  border:0;
+  box-shadow:0 15px 15px 4px rgba(0,0,0,0.06);
+  font-family: 'Baloo Paaji 2', cursive;
+}
+.Location {
+  text-align: center;
+  padding:10px;
+  border:0;
+  box-shadow:0 15px 15px 4px rgba(0,0,0,0.06);
+  font-family: 'Baloo Paaji 2', cursive;
+}
+ .card-header {
+  margin: 0 auto !important;
+} 
+/* Profile Image */
+
+.card__image {
+  display: block;
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  border: 5px solid #77a2d2;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 50px rgba(122, 203, 202, 1);
+}
+
+.card__name {
+  margin-top: 15px;
+  font-size: 1.5em;
+  text-align: center;
+  font-family: 'Baloo Paaji 2', cursive;
+}
+
+.type, .value {
+  text-align: center;
 }
 
 .value {
-  color: black;
-  text-align: center;
-  position: relative;
+  font-weight: 500px;
+  font-size: 1.5rem;
+  color: #3f4866
 }
-
-.card-header {
-  margin: 0 auto !important;
-}
-
-.card-image {
-  grid-area: image;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  background-size: cover;
-}
-
-img {
-  border-radius: 35px;
-}
-
-.card-stats {
-  grid-area: stats;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background: rgb(121, 170, 178);
-}
-
-.card-stats .stat-border {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  padding: 15px;
-  border: solid white;
-}
-.card-stats .stat {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  padding: 10px;
+.type {
+  font-family: 'Baloo Paaji 2', cursive;
 }
 .card-text {
   grid-area: text;
   text-align: center;
-  margin: 25px;
+  margin: 10px;
 }
-.card-text p {
+.card-text .p{
   color: grey;
   font-size: 15px;
   font-weight: 300;
@@ -79,6 +87,63 @@ img {
   margin-top: 0px;
   font-size: 28px;
   color: black;
+} 
+/* Card Social Icons */
+
+.social-icons {
+  padding: 0;
+  list-style: none;
+  margin: 1em;
+  text-align: center;
+}
+
+
+.social-icons li {
+  display: inline-block;
+  margin: 0.15em;
+  position: relative;
+  font-size: 1em;
+}
+
+.social-icons i {
+  color: #fff;
+  position: absolute;
+  top: 0.95em;
+  left: 0.96em;
+  transition: all 265ms ease-out;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons a:before {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  content: " ";
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  display: block;
+  background: linear-gradient(45deg, #77a1d3, #79cbca, #77a1d3);
+  transition: all 265ms ease-out;
+}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+.social-icons a:hover i {
+  transform: scale(2.2);
+  -ms-transform: scale(2.2);
+  -webkit-transform: scale(2.2);
+  color: #3f4866;
+  background: -webkit-linear-gradient(45deg, #77a1d3, #79cbca, #77a1d3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
 }
 
 .float-right {
@@ -175,6 +240,11 @@ input#confirmPassword.form-control {
   );
 }
 
+.delete_button{
+  padding-top: 5px;
+  position: relateive;
+  
+}
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
   #loginSection {
     margin-left: 0px;
@@ -186,3 +256,22 @@ input#confirmPassword.form-control {
     border-radius: 0;
   }
 }
+
+/* .card {
+  
+  height: 37rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.7);
+  color: white;
+} */
+
+
+
+
+
+ 
+
+ 
