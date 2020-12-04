@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
+import API from "../../utils/API";
 
 const Signup = () => {
   const {
@@ -91,6 +92,9 @@ const Signup = () => {
       });
     } else {
       setValidEmail(true);
+      API.sendMail({email:email}).then(res => {
+        console.log(res)
+    })
       setErrorMessage({ ...errorMessage, email: "" });
     }
   };
@@ -155,6 +159,14 @@ const Signup = () => {
     }
   };
 
+  const [email, setEmail] = useState("")
+  const handleFormSubmit = (event) => {
+    console.log(email)
+  API.sendMail({email:email}).then(res => {
+      console.log(res)
+  })
+}
+
   return (
     <div>
       <h2 className="loginTitle">Signup</h2>
@@ -198,6 +210,7 @@ const Signup = () => {
             placeholder="email@email.com"
             value={userData.email}
             onChange={handleInputChange}
+            onSubmit={handleFormSubmit}
             onBlur={checkEmail}
             valid={validEmail}
           />
