@@ -5,25 +5,9 @@ const { addListener } = require("nodemon");
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 
-// Issue token
-// const payload = { email };
-// const token = jwt.sign(payload, secret, {
-//   expiresIn: "1h",
-// });
-// res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-// console.log(token);
+
 
 module.exports = {
-//   sendJWT: function (req, res) {
-//     const payload = { email };
-//     const token = jwt.sign(payload, secret, {
-//       expiresIn: "1h",
-//     });
-//     res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-//     console.log(token);
-
-    // res.json(jwt({ secret: "shhhhhhared-secret" }));
-//   },
   sendMail: async function (req, res) {
     
     const transporter = nodemailer.createTransport({
@@ -34,18 +18,18 @@ module.exports = {
         pass: process.env.REACT_APP_PASS,
       },
     });
- const payload = {email: req.body.email};
+//  const payload = {email: req.body.email};
 
-const secret = 'mysecretsshhh';
-   const token = jwt.sign(payload, secret, {
-     expiresIn: '1h'
-   });
+// const secret = 'mysecretsshhh';
+//    const token = jwt.sign(payload, secret, {
+//      expiresIn: '1h'
+//    });
     // Message object
     let message = {
       from: "no-reply@studdy-buddy.app",
 
       // Comma separated list of recipients
-      to: req.body.email,
+      to: userData.email,
       bcc: "",
 
       // Subject of the message

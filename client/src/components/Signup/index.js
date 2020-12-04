@@ -28,6 +28,9 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
+  const [email, setEmail] = useState("")
+
+  
 
  
 
@@ -202,7 +205,7 @@ const Signup = () => {
             id="email"
             placeholder="email@email.com"
             value={userData.email}
-            onChange={handleInputChange}
+            onChange={e => setEmail(e.target.value)}
             onBlur={checkEmail}
             valid={validEmail}
           />
