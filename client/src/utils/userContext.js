@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const UserContext = React.createContext({
   userData: {},
@@ -10,8 +10,6 @@ const UserContext = React.createContext({
   handleLogin: () => {},
   handleSignup: () => {},
   logout: () => {},
-  uploadImage: () => {},
-  setImageSelected: () => {},
 });
 
 export default UserContext;

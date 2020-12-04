@@ -29,15 +29,27 @@ function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
   const [search, setSearch] = useState("");
+  const [subjects, setSubjects] = useState([]);
   useEffect(() => {
     loadPost();
+    searchSubject();
   }, []);
+
+  function handleInputChange(event) {
+    setSearch(event.target.value);
+  }
+
+  function searchSubject() {
+    API.searchSubject().then((res) => {
+      setSubjects(res.data);
+    });
+  }
 
   function loadPost() {
     API.newsfeed()
       .then((res) => {
-        console.log(res.data)
-        setAllPost(res.data)})
+        setAllPost(res.data);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -50,6 +62,7 @@ function Newsfeed(props) {
   const submitSearch = () => {
     API.getSearch(search)
       .then((res) => {
+        console.log(res.data);
         setAllPost(res.data);
       })
       .catch((err) => console.log(err));
@@ -78,6 +91,7 @@ function Newsfeed(props) {
       <Row>
       <Col xs="auto">
             <MotiveQuote />
+
       </Col>
       
       <Row xs="3">
@@ -157,8 +171,43 @@ function Newsfeed(props) {
       </Row>
       </Row>
 
+            <Search
+              setSearch={setSearch}
+              submitSearch={submitSearch}
+              search={search}
+              subjects={subjects}
+              handleInputChange={handleInputChange}
+            />
+            {AllPost.map((post) => (
+              <Card key={post._id}>
+                <CardHeader className="header-background">
+                  <CardImg
+                    className="card-image justify-content-center"
+                    variant="top"
+                    // src="../img/background.jpg"
+                  />
+                  <img
+                    src={post.userId.Image}
+                    width="215px"
+                    justify-content="center"
+                    align-items="center"
+                  ></img>
+                </CardHeader>
+
+                <CardBody>
+                  <CardTitle className="card-text">
+                      <h2>{post.userId.username}</h2>                  
+                  </CardTitle>
+                  <CardTitle>
+                    <CardText className="card-text">
+                      {post.notes}
+                    </CardText>
+                  </CardTitle>
+
+
     ) : (
       <Row>
+
 
         <Col>
         <div id="loginSection">
@@ -166,6 +215,40 @@ function Newsfeed(props) {
           <Link to="/login">
             <Button> Login </Button>
           </Link>
+
+                  <div className="card-stats">
+                    <div className="stat-border">
+                      <div className="value">Buddies:</div>
+                      <div className="type">{post.group}</div>
+                    </div>
+                    <div className="stat-border">
+                      <div className="value">Subject:</div>
+                      <div className="type">{post.subject}</div>
+                    </div>
+                    <div className="stat-border">
+                      <div className="value">Location:</div>
+                      <div className="type">{post.location}</div>
+                    </div>
+                  </div>
+                </CardBody>
+                <CardFooter className="footer-background">
+                  {moment(post.date).format("MMMM Do YYYY, h:mm:ss a")}
+                  <Button
+                    className="float-right"
+                    close
+                    onClick={() => deletePost(post._id)}
+                  />
+                </CardFooter>
+              </Card>
+            ))}
+          </Col>
+        ) : (
+          <div id="loginSection">
+            <h4> Log in to view this page </h4>
+            <Link to="/login">
+              <Button> Login </Button>
+            </Link>
+
           </div>
         </Col>
       </Row>

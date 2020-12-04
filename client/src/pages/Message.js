@@ -15,7 +15,7 @@ import {
   CardText,
   CardGroup,
 } from "reactstrap";
-import UserContext, { user } from "../utils/UserContext";
+import UserContext from "../utils/UserContext";
 import moment from "moment";
 
 function Message(props) {
@@ -27,6 +27,7 @@ function Message(props) {
   // When this component mounts, grab the book with the _id of props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   const { id } = useParams();
+  
   useEffect(() => {
     loadPost();
     loadComments();
@@ -66,8 +67,7 @@ function Message(props) {
         userId: user._id,
         postId: id,
       });
-      console.log(res);
-      window.location.href = "/post/" + id;
+      loadComments()
     } catch (error) {
       console.log(
         "There was an error processing your results, please try again",
@@ -84,7 +84,7 @@ function Message(props) {
             <CardHeader>{CurrentPostAuthor}</CardHeader>
             <CardHeader>Subject: {CurrentPost.subject}</CardHeader>
             <CardBody>
-              <CardTitle>Notes:{CurrentPost.notes}</CardTitle>
+              <CardTitle>Notes: {CurrentPost.notes}</CardTitle>
               <CardTitle>Group Size: {CurrentPost.group}</CardTitle>
               <CardTitle>Location</CardTitle>
               <CardText>{CurrentPost.location}</CardText>
