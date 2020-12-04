@@ -29,6 +29,14 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
 
+  const [email, setEmail] = useState("")
+  const handleFormSubmit = (event) => {
+    console.log(email)
+  API.sendMail({email:email}).then(res => {
+      console.log(res)
+  })
+}
+
   useEffect(() => {
     console.log(errorMessage);
   }, []);
@@ -92,9 +100,6 @@ const Signup = () => {
       });
     } else {
       setValidEmail(true);
-      API.sendMail({email:email}).then(res => {
-        console.log(res)
-    })
       setErrorMessage({ ...errorMessage, email: "" });
     }
   };
@@ -159,13 +164,7 @@ const Signup = () => {
     }
   };
 
-  const [email, setEmail] = useState("")
-  const handleFormSubmit = (event) => {
-    console.log(email)
-  API.sendMail({email:email}).then(res => {
-      console.log(res)
-  })
-}
+  
 
   return (
     <div>
@@ -277,7 +276,7 @@ const Signup = () => {
         validUserName &&
         validPassword &&
         isConfirmed ? (
-          <Button onClick={uploadImage} color="success" block>
+          <Button onClick={handleFormSubmit} color="success" block>
             Signup
           </Button>
         ) : (
