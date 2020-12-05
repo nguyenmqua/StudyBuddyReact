@@ -26,7 +26,6 @@ import { FaGithub } from "react-icons/fa";
 
 import Highlighter from "react-highlight-words";
 
-
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
@@ -67,31 +66,32 @@ function Newsfeed(props) {
 
   return (
     <Container>
-      <div >
       <Row>
         {!loggedIn ? (
-          <Col >
+          <Col>
             <h1 className="TypographyHeader">Welcome to Study Buddy!</h1>
-            
+
             <p id="TypographyPara">
               Study Buddy is designed to help you connect with fellow students
               or like minded folks who would like to study the same subject
-              together. 
-              <br/>
+              together.
+              <br />
+              <br />
               <Highlighter
                 highlightClassName="LoginParagraph"
-                searchWords={[ "Login","Choose a Subject", "Choose to Connect"]}
+                searchWords={["Login", "Choose a Subject", "Choose to Connect"]}
                 autoEscape={true}
                 textToHighlight="Login, Choose a Subject, Choose to Connect Virtually or
                 in Person and Choose how many people you'd like to study with. You
-                can see who's studying the same subject and connect with them."/>
+                can see who's studying the same subject and connect with them."
+              />
             </p>
+            <br />
           </Col>
         ) : (
           ""
         )}
       </Row>
-      </div>
       {loggedIn ? (
         <Row>
           <Col>
@@ -127,6 +127,7 @@ function Newsfeed(props) {
                     width="215px"
                     justify-content="center"
                     align-items="center"
+                    alt="profile pic"
                   ></img>
                   <CardBody className="grid-child-posts">
                     <CardTitle>
@@ -150,28 +151,48 @@ function Newsfeed(props) {
                       <Col>
                         <ul className="social-icons">
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://www.instagram.com/"
+                              title="link to Instagram"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-instagram">
                                 <FaInstagram />
                               </i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://twitter.com/"
+                              title="link to Twitter"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-twitter">
                                 <FaTwitter />
                               </i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://www.linkedin.com/"
+                              title="link to LinkedIn"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-linkedin">
                                 <FaLinkedinIn />
                               </i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://github.com/"
+                              title="link to Github"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-github">
                                 <FaGithub />
                               </i>
@@ -202,13 +223,15 @@ function Newsfeed(props) {
           </Row>
         </Row>
       ) : (
-        <Row className="Login">
+        <Row>
+          <Col>
             <div id="loginSection">
               <h4> Log in to view this page </h4>
-              <Link to="/login" className="Demo">
+              <Link to="/login">
                 <Button> Login </Button>
               </Link>
             </div>
+          </Col>
         </Row>
       )}
     </Container>

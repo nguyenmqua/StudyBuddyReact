@@ -68,6 +68,8 @@ router.get('/profile', authMiddleware.isLoggedIn, (req, res, next) => {
   });
 });
 
+
+
 router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
   res.json('User logged out successfully');
 });

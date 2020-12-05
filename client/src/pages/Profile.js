@@ -51,9 +51,12 @@ function Member(props) {
             <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for a Study Buddy?</h3>
             <img
+              alt="user"
               src={user && user.Image}
               width="200px"
               className="float-left"
+              alt="user profile pic"
+              id="avatar"
             ></img>
             <FormGroup row>
               <Label for="exampleFile" sm={2}>
@@ -63,7 +66,7 @@ function Member(props) {
                 <Input
                   type="text"
                   name="file"
-                  id="exampleFile"
+                  id="inputSubject"
                   onChange={(e) => setSubject(e.target.value)}
                 />
                 <FormText color="muted" />
@@ -90,13 +93,13 @@ function Member(props) {
             </FormGroup>
             <FormGroup row>
               <Label for="exampleFile" sm={2}>
-                Additional Notes
+                Notes
               </Label>
               <Col sm={10}>
                 <Input
                   type="text"
                   name="file"
-                  id="exampleFile"
+                  id="inputNotes"
                   onChange={(e) => setNotes(e.target.value)}
                 />
                 <FormText color="muted" />
@@ -110,7 +113,7 @@ function Member(props) {
                 <Input
                   type="text"
                   name="file"
-                  id="exampleFile"
+                  id="inputLocation"
                   onChange={(e) => setLocation(e.target.value)}
                 />
                 <FormText color="muted" />
