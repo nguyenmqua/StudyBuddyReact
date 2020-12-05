@@ -137,7 +137,7 @@ const App = () => {
 
   
     console.log({ email, message });
-    const response = await fetch("/access", { 
+    const response = await fetch("/sendMail", { 
       method: 'POST', 
       headers: { 
           'Content-type': 'application/json'

@@ -3,7 +3,7 @@
 let nodemailer = require("nodemailer");
 const { addListener } = require("nodemon");
 require("dotenv").config();
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 
 

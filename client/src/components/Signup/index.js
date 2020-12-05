@@ -205,7 +205,7 @@ const Signup = () => {
             id="email"
             placeholder="email@email.com"
             value={userData.email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={handleInputChange}
             onBlur={checkEmail}
             valid={validEmail}
           />
