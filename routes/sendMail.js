@@ -1,12 +1,10 @@
-//sendMail.js
-
 const router = require("express").Router("")
 const { get } = require("mongoose");
-const nodemailerController = require("../controllers/nodemailerController");
+const welcomemailerController = require("../controllers/welcomemailerController");
 // const withAuth = require('../config/middleware/middleware');
 
 router.route("/sendMail")
-  .post(nodemailerController.sendMail);
+  .post(welcomemailerController.sendMail);
 
 //   router.route("/checkToken/:token")
 //        .get(withAuth, nodemailerController.checkToken)
