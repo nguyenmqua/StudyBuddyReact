@@ -9,7 +9,7 @@ require("dotenv").config();
 
 module.exports = {
   sendMail: async function (req, res) {
-    
+    console.log(req.user)
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
@@ -29,7 +29,7 @@ module.exports = {
       from: "no-reply@studdy-buddy.app",
 
       // Comma separated list of recipients
-      to: userData.email,
+      to: req.body.email,
       bcc: "",
 
       // Subject of the message

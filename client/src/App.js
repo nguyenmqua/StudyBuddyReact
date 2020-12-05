@@ -142,7 +142,7 @@ const App = () => {
       headers: { 
           'Content-type': 'application/json'
       }, 
-      body: JSON.stringify({email, message}) 
+      body: JSON.stringify({email: userData.email}) 
   }); 
     const resData = await response.json(); 
     if (resData.status === 'success'){
