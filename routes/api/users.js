@@ -19,6 +19,26 @@ router.post(
   },
 );
 
+router.post('/resetPass', (req, res) => {
+
+  const newUser = new db.User({
+    password: req.body.reset
+  });
+  console.log(req.body.reset, req.user)
+  newUser.password = newUser.generateHash(req.body.password);
+  console.log("newUser", newUser)
+  res.json(newUser.password)
+
+  // db.User.findOneAndUpdate({email: {}}, {firstname: 'German', password: usersSchema.methods.generateHash('Password2!')}, (error, data) => {
+  //   if(error) {
+  //     console.log(error)
+  //   } else {
+  //     console.log(data)
+  //   }
+  // })
+  
+})
+
 router.post('/signup', (req, res, next) => {
   db.User.findOne({ username: req.body.username }, (err, user) => {
     if (err) throw err;

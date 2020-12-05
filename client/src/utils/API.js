@@ -10,7 +10,8 @@ export default {
   // },
 
   reset: function (data) {
-    return axios.post('/api/users', data)
+    console.log(data)
+    return axios.post('/api/users/resetPass', data)
   },
 
   login: function (loginInfo) {

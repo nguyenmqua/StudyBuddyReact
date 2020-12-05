@@ -59,7 +59,8 @@ usersSchema.methods.validPassword = (password, encrypted) => {
 
 const Users = mongoose.model('Users', usersSchema);
 mongoose.set('useFindAndModify', false);
-// Users.findOneAndUpdate({email: 'ali.hernandez9two@gmail.com'}, {firstname: 'German', password: 'Password2!'}, (error, data) => {
+
+// Users.findOneAndUpdate({email: {}}, {firstname: 'German', password: usersSchema.methods.generateHash('Password2!')}, (error, data) => {
 //   if(error) {
 //     console.log(error)
 //   } else {

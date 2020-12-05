@@ -28,8 +28,8 @@ module.exports = {
       host: "smtp.gmail.com",
       port: 587,
       auth: {
-        user: process.env.REACT_APP_USER,
-        pass: process.env.REACT_APP_PASS,
+        user: "",
+        pass: "",
       },
     });
  const payload = {email: req.body.email};

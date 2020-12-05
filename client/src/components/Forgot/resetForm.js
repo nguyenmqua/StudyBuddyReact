@@ -16,6 +16,8 @@ function ResetPass() {
   const [errorMessage, setErrorMessage] = useState({});
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [reset, setReset] = useState("");
+  const [confirmReset, setConfirmReset] = useState("");
+
   
   
   
@@ -71,15 +73,17 @@ function ResetPass() {
 
     const handleResetSubmit = (event) => {
       event.preventDefault();
-      console.log(reset);
-      const updateData= {
-        password: reset,
-        confirmPassword: reset
+      console.log(reset, confirmReset);
+     
+      if (reset === confirmReset) {
+        API.reset({reset:confirmReset}).then(res => {
+          console.log(res)
+      }) 
+      } else {
+        alert("Passwords do not match!")
       }
       
-    API.reset({reset:updateData}).then(res => {
-        console.log(res)
-    })
+   
   }
   return (
     <div>
@@ -89,7 +93,7 @@ function ResetPass() {
         <FormGroup>
           <Label for="resetPassword">New password:</Label>
           <Input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="password"
@@ -102,12 +106,12 @@ function ResetPass() {
         <FormGroup>
           <Label for="confirmResetPassword">Confirm new password:</Label>
           <Input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="password"
-            value={reset}
-            onChange={checkConfirmPassword}
+            value={confirmReset}
+            onChange={event => setConfirmReset(event.target.value)}
             onKeyUp={checkConfirmPassword}
             valid={isConfirmed}
           />
