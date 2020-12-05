@@ -23,7 +23,9 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
-  const [loading, setLoading] = useState(false);
+
+  const [setLoading] = useState(false);
+ 
 
   useEffect(() => {
     isLoggedIn();

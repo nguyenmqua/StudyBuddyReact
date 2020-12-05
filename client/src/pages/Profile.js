@@ -51,6 +51,7 @@ function Member(props) {
             <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for a Study Buddy?</h3>
             <img
+              alt="user"
               src={user && user.Image}
               width="200px"
               className="float-left"
@@ -121,11 +122,13 @@ function Member(props) {
             <Button onClick={handleUserBtnClick}>Submit Post</Button>
           </Col>
         ) : (
-          <div>
-            <h1> Log in to view this page </h1>
+          <div className="Profile_Login">
+            
+            <h1> Login to view this page </h1>
             <Link to="/login">
-              <Button> Login </Button>
+              <Button id="Profile_Login_Button"> Login </Button>
             </Link>
+            
           </div>
         )}
       </Row>
