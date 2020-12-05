@@ -60,6 +60,8 @@
   box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.75);
   width: 860px;
   margin-left: 99px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -70,6 +72,8 @@
     box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.75);
     width: 100%;
     margin-left: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .float-left.card {
@@ -94,6 +98,17 @@
 .float-right.close {
   margin-right: 10px;
 }
+
+
+img {
+  border-radius: 5px;
+}
+
+img#avatar.float-left {
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
 /*  Formatting and Positiong for "Login to view this page */
 .Profile_Login {
   margin: auto;
@@ -110,3 +125,4 @@
   margin: auto;
   margin-top: 25px;
 }
+

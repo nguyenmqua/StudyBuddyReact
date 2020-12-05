@@ -32,7 +32,7 @@ function Message(props) {
   useEffect(() => {
     loadPost();
     loadComments();
-  }, []);
+  });
 
   function loadComments() {
     API.getComments(id)
