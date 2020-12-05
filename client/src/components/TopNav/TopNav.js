@@ -28,7 +28,8 @@ const Navigation = () => {
     <div>
       <Navbar className="navbar" light expand="md">
         <NavbarBrand href="/">
-          <img src={Logo} />
+
+          <img src={Logo} alt="StudyBuddy Logo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -36,9 +37,10 @@ const Navigation = () => {
             <NavItem>
               <NavLink href="/">Home</NavLink>
             </NavItem>
+            {loggedIn ? (
             <NavItem>
               <NavLink href="/profile">Request Buddy</NavLink>
-            </NavItem>
+            </NavItem>):(<></>)}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 <i className="fas fa-user-secret"></i>

@@ -36,7 +36,7 @@ const Signup = () => {
 
   useEffect(() => {
     console.log(errorMessage);
-  }, []);
+  }, [errorMessage]);
 
   const handleConfirmPassword = (event) => {
     const { value } = event.target;

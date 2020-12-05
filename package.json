@@ -20,6 +20,11 @@
     "nodemon": "^2.0.6"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "axios": "^0.18.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.3",
@@ -35,6 +40,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.3.16",
     "morgan": "^1.10.0",
+    "node": "^15.3.0",
     "node-sass": "^5.0.0",
     "nodemailer": "^6.4.16",
     "passport": "^0.4.1",
@@ -42,6 +48,7 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
+    "react-highlight-words": "^0.16.0",
     "reactstrap": "^8.7.1",
     "styled-components": "^5.2.1"
   }

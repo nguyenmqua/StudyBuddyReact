@@ -9,7 +9,7 @@ function Footer() {
         <a
           href="https://github.com/nguyenmqua/StudyBuddyReact"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer" 
         >
           Learn More
         </a>

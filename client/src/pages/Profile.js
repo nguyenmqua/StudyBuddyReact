@@ -14,7 +14,6 @@ import UserContext from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-
 function Member(props) {
   const { user, loggedIn } = useContext(UserContext);
   const [Subject, setSubject] = useState("");
@@ -48,13 +47,16 @@ function Member(props) {
     <Container fluid>
       <Row>
         {loggedIn ? (
-          <Col id="reqBody" sm="12" md={{ size: 8, offset: 2 }}>
+          <Col id="reqBody" sm="12" md={{ size: 6, offset: 3 }}>
             <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for a Study Buddy?</h3>
             <img
+              alt="user"
               src={user && user.Image}
               width="200px"
               className="float-left"
+              alt="user profile pic"
+              id="avatar"
             ></img>
             <FormGroup row>
               <Label for="exampleFile" sm={2}>
@@ -64,7 +66,7 @@ function Member(props) {
                 <Input
                   type="text"
                   name="file"
-                  id="exampleFile"
+                  id="inputSubject"
                   onChange={(e) => setSubject(e.target.value)}
                 />
                 <FormText color="muted" />
@@ -91,13 +93,13 @@ function Member(props) {
             </FormGroup>
             <FormGroup row>
               <Label for="exampleFile" sm={2}>
-                Additional Notes
+                Notes
               </Label>
               <Col sm={10}>
                 <Input
                   type="text"
                   name="file"
-                  id="exampleFile"
+                  id="inputNotes"
                   onChange={(e) => setNotes(e.target.value)}
                 />
                 <FormText color="muted" />
@@ -111,7 +113,7 @@ function Member(props) {
                 <Input
                   type="text"
                   name="file"
-                  id="exampleFile"
+                  id="inputLocation"
                   onChange={(e) => setLocation(e.target.value)}
                 />
                 <FormText color="muted" />
@@ -120,11 +122,13 @@ function Member(props) {
             <Button onClick={handleUserBtnClick}>Submit Post</Button>
           </Col>
         ) : (
-          <div>
-            <h1> Log in to view this page </h1>
+          <div className="Profile_Login">
+            
+            <h1> Login to view this page </h1>
             <Link to="/login">
-              <Button> Login </Button>
+              <Button id="Profile_Login_Button"> Login </Button>
             </Link>
+            
           </div>
         )}
       </Row>
