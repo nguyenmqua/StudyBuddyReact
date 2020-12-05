@@ -17,9 +17,10 @@ import {
 } from "reactstrap";
 import UserContext from "../utils/UserContext";
 import moment from "moment";
+import Login from "../components/Login"
 
 function Message(props) {
-  const { user } = useContext(UserContext);
+  const { user, loggedIn } = useContext(UserContext);
   const [CurrentPost, setCurrentPost] = useState({});
   const [CurrentPostAuthor, setCurrentPostAuthor] = useState("");
   const [Comment, setComment] = useState("");
@@ -54,11 +55,6 @@ function Message(props) {
       .catch((err) => console.log(err));
   }
 
-  function deletePost(id) {
-    API.deletePost(id)
-      .then((res) => loadPost())
-      .catch((err) => console.log(err));
-  }
 
   const handleUserBtnClick = async (e) => {
     try {
@@ -77,6 +73,8 @@ function Message(props) {
   };
 
   return (
+    <>
+    {loggedIn ? (
     <Container>
       <Row>
         <Col sm="12" md={{ size: 12 }}>
@@ -149,6 +147,8 @@ function Message(props) {
         </Col>
       </Row>
     </Container>
+    ):(<Login />)}
+    </>
   );
 }
 export default Message;

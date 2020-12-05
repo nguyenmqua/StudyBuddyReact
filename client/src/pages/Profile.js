@@ -52,6 +52,7 @@ function Member(props) {
             <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for a Study Buddy?</h3>
             <img
+              alt="user"
               src={user && user.Image}
               width="200px"
               className="float-left"

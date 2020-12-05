@@ -8,7 +8,6 @@ import NoMatch from "./pages/NoMatch";
 import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
-import { Container } from "reactstrap";
 import UserContext from "./utils/UserContext";
 
 const App = () => {
@@ -24,7 +23,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [setLoading] = useState(false);
  
   useEffect(() => {
     isLoggedIn();
