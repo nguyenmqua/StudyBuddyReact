@@ -119,11 +119,13 @@ function Member(props) {
             <Button onClick={handleUserBtnClick}>Submit Post</Button>
           </Col>
         ) : (
-          <div>
-            <h1> Log in to view this page </h1>
+          <div className="Profile_Login">
+            
+            <h1> Login to view this page </h1>
             <Link to="/login">
-              <Button> Login </Button>
+              <Button id="Profile_Login_Button"> Login </Button>
             </Link>
+            
           </div>
         )}
       </Row>
