@@ -28,7 +28,7 @@ function Message(props) {
   // When this component mounts, grab the book with the _id of props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   const { id } = useParams();
-  
+
   useEffect(() => {
     loadPost();
     loadComments();
@@ -63,7 +63,7 @@ function Message(props) {
         userId: user._id,
         postId: id,
       });
-      loadComments()
+      loadComments();
     } catch (error) {
       console.log(
         "There was an error processing your results, please try again",
@@ -77,14 +77,17 @@ function Message(props) {
     {loggedIn ? (
     <Container>
       <Row>
-        <Col sm="12" md={{ size: 12 }}>
+        <Col sm="3" md={{ size: 3 }}></Col>
+        <Col sm="6" md={{ size: 6 }}>
           <Card key={CurrentPost._id}>
             <CardHeader>{CurrentPostAuthor}</CardHeader>
             <CardHeader>Subject: {CurrentPost.subject}</CardHeader>
             <CardBody>
-              <CardTitle>Notes: {CurrentPost.notes}</CardTitle>
-              <CardTitle>Group Size: {CurrentPost.group}</CardTitle>
-              <CardTitle>Location</CardTitle>
+              <CardTitle>Notes: </CardTitle>
+              <CardText>{CurrentPost.notes}</CardText>
+              <CardTitle>Group Size: </CardTitle>
+              <CardText>{CurrentPost.group}</CardText>
+              <CardTitle>Location: </CardTitle>
               <CardText>{CurrentPost.location}</CardText>
             </CardBody>
 
@@ -93,14 +96,15 @@ function Message(props) {
             </CardFooter>
           </Card>
         </Col>
+        <Col sm="3" md={{ size: 3 }}></Col>
       </Row>
 
       <div id="messageBody">
         {DisplayComments.map((comment) => (
           <Row key={comment._id}>
-            <Col sm="2" md={{ size: 2 }}></Col>
+            {/* <Col sm="2" md={{ size: 2 }}></Col> */}
 
-            <Col sm="8" md={{ size: 8 }}>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
               {CurrentPostAuthor === comment.userId.username ? (
                 <CardGroup className="float-right">
                   <Card className="bg-info clearfix">
@@ -127,13 +131,13 @@ function Message(props) {
               )}
             </Col>
 
-            <Col sm="2" md={{ size: 2 }}></Col>
+            {/* <Col sm="2" md={{ size: 2 }}></Col> */}
           </Row>
         ))}
       </div>
 
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 2 }}>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
           <Card>
             <CardHeader>Reply</CardHeader>
             <CardBody>

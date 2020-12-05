@@ -1,45 +1,44 @@
 /* Newsfeed Cards */
 
 .card {
-  margin: 25px;
-  padding: 5px;
+  margin: 10px;
+  padding: 3px;
   -webkit-box-shadow: 0px 0px 6px 4px #a1c4fd;
   box-shadow: 0px 0px 6px 4px #b5cbd6;
-  cursor: pointer; 
-  background-color:#d8e3e9;
+  cursor: pointer;
+  background-color: #d8e3e9;
   border-radius: 25px;
-
-} 
+}
 
 .footer-background {
-  background-color: #cadfe5; 
+  background-color: #cadfe5;
 }
 .Date {
   margin: 5px;
   text-align: center;
-  padding:10px;
-  border:0;
-  box-shadow:0 15px 15px 4px rgba(0,0,0,0.06);
-  font-family: 'Baloo Paaji 2', cursive;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 15px 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: "Baloo Paaji 2", cursive;
 }
 
 .Note {
   text-align: center;
-  padding:10px;
-  border:0;
-  box-shadow:0 15px 15px 4px rgba(0,0,0,0.06);
-  font-family: 'Baloo Paaji 2', cursive;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 15px 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: "Baloo Paaji 2", cursive;
 }
 .Location {
   text-align: center;
-  padding:10px;
-  border:0;
-  box-shadow:0 15px 15px 4px rgba(0,0,0,0.06);
-  font-family: 'Baloo Paaji 2', cursive;
+  padding: 10px;
+  border: 0;
+  box-shadow: 0 15px 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: "Baloo Paaji 2", cursive;
 }
- .card-header {
+.card-header {
   margin: 0 auto !important;
-} 
+}
 /* Profile Image */
 
 .card__image {
@@ -47,37 +46,38 @@
   height: 160px;
   width: 160px;
   border-radius: 50%;
-  border: 5px solid #77a2d2;
+  border: 4px solid #77a2d2;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 10px 50px rgba(122, 203, 202, 1);
+  box-shadow: 0 10px 50px rgba(122, 203, 202, 0.75);
 }
 
 .card__name {
   margin-top: 15px;
   font-size: 1.5em;
   text-align: center;
-  font-family: 'Baloo Paaji 2', cursive;
+  font-family: "Baloo Paaji 2", cursive;
 }
 
-.type, .value {
+.type,
+.value {
   text-align: center;
 }
 
 .value {
   font-weight: 500px;
   font-size: 1.5rem;
-  color: #3f4866
+  color: #3f4866;
 }
 .type {
-  font-family: 'Baloo Paaji 2', cursive;
+  font-family: "Baloo Paaji 2", cursive;
 }
 .card-text {
   grid-area: text;
   text-align: center;
   margin: 10px;
 }
-.card-text .p{
+.card-text .p {
   color: grey;
   font-size: 15px;
   font-weight: 300;
@@ -87,7 +87,7 @@
   margin-top: 0px;
   font-size: 28px;
   color: black;
-} 
+}
 /* Card Social Icons */
 
 .social-icons {
@@ -96,7 +96,6 @@
   margin: 1em;
   text-align: center;
 }
-
 
 .social-icons li {
   display: inline-block;
@@ -240,10 +239,9 @@ input#confirmPassword.form-control {
   );
 }
 
-.delete_button{
+.delete_button {
   padding-top: 5px;
   position: relateive;
-  
 }
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
   #loginSection {
@@ -257,6 +255,46 @@ input#confirmPassword.form-control {
   }
 }
 
+/* LoginSection */
+.Login {
+  text-align: center;
+  margin-left: 150px;
+  color: #3f4866; 
+  font-family: 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px; 
+  padding-top: 100px;
+}
+
+ .TypographyHeader {
+  color: #3f4866; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-size: 46px; 
+  font-weight: 100; 
+  line-height: 50px; 
+  letter-spacing: 1px; 
+  padding: 0 0 40px; 
+  border-bottom: double #555;
+ }
+ .TypographyPara {
+  color: #bbc3c8; 
+  font-family: 'Verdana', sans-serif; 
+  font-size: 16px; 
+  line-height: 26px; 
+  text-indent: 30px; 
+  margin: 0; 
+ }
+
+  .LoginParagraph { 
+  color: #6153cc; 
+  background: none;
+  text-decoration: none; 
+} 
+
+.LoginParagraph:hover { 
+  color: #3f4866; 
+  border-bottom: 1px solid #3f4866;
+} 
+
 /* .card {
   
   height: 37rem;
@@ -268,10 +306,3 @@ input#confirmPassword.form-control {
   color: white;
 } */
 
-
-
-
-
- 
-
- 

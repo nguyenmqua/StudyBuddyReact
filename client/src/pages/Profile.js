@@ -14,7 +14,6 @@ import UserContext from "../utils/UserContext";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-
 function Member(props) {
   const { user, loggedIn } = useContext(UserContext);
   const [Subject, setSubject] = useState("");
@@ -48,7 +47,7 @@ function Member(props) {
     <Container fluid>
       <Row>
         {loggedIn ? (
-          <Col id="reqBody" sm="12" md={{ size: 8, offset: 2 }}>
+          <Col id="reqBody" sm="12" md={{ size: 6, offset: 3 }}>
             <h1> Welcome back {user && user.firstname}</h1>
             <h3>Looking for a Study Buddy?</h3>
             <img
