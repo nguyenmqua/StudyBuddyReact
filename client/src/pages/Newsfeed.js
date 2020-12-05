@@ -8,13 +8,12 @@ import {
   Col,
   Card,
   Button,
-  CardHeader,
   CardFooter,
   CardBody,
   CardTitle,
   CardText,
   CardImg,
-  CardGroup,
+  Section,
 } from "reactstrap";
 import UserContext from "../utils/UserContext";
 import MotiveQuote from "../components/MotiveQuote";
@@ -95,8 +94,10 @@ function Newsfeed(props) {
       </div>
       {loggedIn ? (
         <Row>
+          <Col>
+          <MotiveQuote />
+          </Col>
           <Col xs="auto">
-            <MotiveQuote />
             <Search
               setSearch={setSearch}
               submitSearch={submitSearch}
@@ -105,6 +106,7 @@ function Newsfeed(props) {
               handleInputChange={handleInputChange}
             />
           </Col>
+          
           <Row xs="3">
             {AllPost.map((post, i) => (
               <div key={i}>
