@@ -29,7 +29,7 @@ module.exports = {
       from: "no-reply@studdy-buddy.app",
 
       // Comma separated list of recipients
-      to: req.body.email,
+      to: userData.email,
       bcc: "",
 
       // Subject of the message
