@@ -22,8 +22,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-
 import Highlighter from "react-highlight-words";
+import Modal from "../components/Modals"
 
 
 function Newsfeed(props) {
@@ -90,6 +90,7 @@ function Newsfeed(props) {
         )}
       </Row>
       {loggedIn ? (
+        <>
         <Row>
           <Col xs="auto">
             <MotiveQuote />
@@ -216,6 +217,7 @@ function Newsfeed(props) {
             ))}
           </Row>
         </Row>
+      </>
       ) : (
         <Row>
           <Col>
