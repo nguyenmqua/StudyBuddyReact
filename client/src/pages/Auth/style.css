@@ -255,6 +255,46 @@ input#confirmPassword.form-control {
   }
 }
 
+/* LoginSection */
+.Login {
+  text-align: center;
+  margin-left: 150px;
+  color: #3f4866; 
+  font-family: 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px; 
+  padding-top: 100px;
+}
+
+ .TypographyHeader {
+  color: #3f4866; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-size: 46px; 
+  font-weight: 100; 
+  line-height: 50px; 
+  letter-spacing: 1px; 
+  padding: 0 0 40px; 
+  border-bottom: double #555;
+ }
+ .TypographyPara {
+  color: #bbc3c8; 
+  font-family: 'Verdana', sans-serif; 
+  font-size: 16px; 
+  line-height: 26px; 
+  text-indent: 30px; 
+  margin: 0; 
+ }
+
+  .LoginParagraph { 
+  color: #6153cc; 
+  background: none;
+  text-decoration: none; 
+} 
+
+.LoginParagraph:hover { 
+  color: #3f4866; 
+  border-bottom: 1px solid #3f4866;
+} 
+
 /* .card {
   
   height: 37rem;
@@ -265,3 +305,4 @@ input#confirmPassword.form-control {
   box-shadow: rgba(0, 0, 0, 0.7);
   color: white;
 } */
+

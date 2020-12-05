@@ -25,6 +25,9 @@ import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+import Highlighter from "react-highlight-words";
+
+
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
   const [AllPost, setAllPost] = useState([]);
@@ -65,22 +68,31 @@ function Newsfeed(props) {
 
   return (
     <Container>
+      <div >
       <Row>
         {!loggedIn ? (
-          <Col sm="12" md={{ size: 8, offset: 2 }}>
-            <h2>Welcome to Study Buddy!</h2>
-            <p style={{ fontSize: "1.25em" }}>
+          <Col >
+            <h1 className="TypographyHeader">Welcome to Study Buddy!</h1>
+            
+            <p id="TypographyPara">
               Study Buddy is designed to help you connect with fellow students
               or like minded folks who would like to study the same subject
-              together. Login, Choose a Subject, Choose to Connect Virtually or
-              in Person and Choose how many people you'd like to study with. You
-              can see who's studying the same subject and connect with them.
+              together. 
+              <br/>
+              <Highlighter
+                highlightClassName="LoginParagraph"
+                searchWords={[ "Login","Choose a Subject", "Choose to Connect"]}
+                autoEscape={true}
+                textToHighlight="Login, Choose a Subject, Choose to Connect Virtually or
+                in Person and Choose how many people you'd like to study with. You
+                can see who's studying the same subject and connect with them."/>
             </p>
           </Col>
         ) : (
           ""
         )}
       </Row>
+      </div>
       {loggedIn ? (
         <Row>
           <Col xs="auto">
@@ -188,15 +200,13 @@ function Newsfeed(props) {
           </Row>
         </Row>
       ) : (
-        <Row>
-          <Col>
+        <Row className="Login">
             <div id="loginSection">
               <h4> Log in to view this page </h4>
-              <Link to="/login">
+              <Link to="/login" className="Demo">
                 <Button> Login </Button>
               </Link>
             </div>
-          </Col>
         </Row>
       )}
     </Container>
