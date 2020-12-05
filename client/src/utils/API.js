@@ -9,6 +9,11 @@ export default {
     return axios.post("/api/users/signup", signupInfo);
   },
 
+  sendMail: function (email) {
+    return axios.post('/sendMail', email)
+  },
+  
+
   isLoggedIn: function () {
     return axios.get("/api/users/profile");
   },

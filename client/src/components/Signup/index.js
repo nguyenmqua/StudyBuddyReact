@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
+import API from "../../utils/API";
 
 const Signup = () => {
   const {
@@ -27,6 +28,11 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
+  const [email, setEmail] = useState("")
+
+  
+
+ 
 
   useEffect(() => {
     console.log(errorMessage);
@@ -154,6 +160,8 @@ const Signup = () => {
       });
     }
   };
+
+  
 
   return (
     <div>

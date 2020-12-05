@@ -24,7 +24,10 @@ const App = () => {
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
 
-  const [setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState('');
+
  
 
   useEffect(() => {
@@ -115,7 +118,7 @@ const App = () => {
       });
     }
   };
-
+  
   const uploadImage = async (e) => {
     const data = new FormData();
     data.append("file", imageSelected);
@@ -130,6 +133,26 @@ const App = () => {
     );
     const file = await res.json();
     handleSignup(file.secure_url);
+      console.log(userData.email)
+    await setEmail(userData.email)
+    
+
+  
+    console.log({ email, message });
+    const response = await fetch("/sendMail", { 
+      method: 'POST', 
+      headers: { 
+          'Content-type': 'application/json'
+      }, 
+      body: JSON.stringify({email: userData.email}) 
+  }); 
+    const resData = await response.json(); 
+    if (resData.status === 'success'){
+      alert("Message Sent."); 
+      this.resetForm()
+  }else if(resData.status === 'fail'){
+      alert("Message failed to send.")
+  }
   };
 
   // const setUpProfilePic = (image) => {
@@ -163,6 +186,9 @@ const App = () => {
     setImageSelected,
     uploadImage,
   };
+
+
+  
   return (
     <UserContext.Provider value={contextValue}>
       <Router>
