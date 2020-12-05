@@ -3,6 +3,7 @@
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.75);
+  
 }
 
 .bg-info {
@@ -93,4 +94,19 @@
 .float-right.close {
   margin-right: 10px;
 }
+/*  Formatting and Positiong for "Login to view this page */
+.Profile_Login {
+  margin: auto;
+  text-align: center;
+  margin-left: auto;
+  color: #3f4866; 
+  font-family: 'Helvetica Neue', sans-serif;
+  letter-spacing: 15px; 
+  padding-top: 100px;
 
+}
+
+#Profile_Login_Button.btn.btn-secondary {
+  margin: auto;
+  margin-top: 25px;
+}
