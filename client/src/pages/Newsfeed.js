@@ -24,6 +24,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+
 import Highlighter from "react-highlight-words";
 
 
@@ -59,7 +60,7 @@ function Newsfeed(props) {
   const submitSearch = () => {
     API.getSearch(search)
       .then((res) => {
-        console.log(res.data);
+        console.log("Search Results: ", res.data);
         setAllPost(res.data);
       })
       .catch((err) => console.log(err));
@@ -105,9 +106,9 @@ function Newsfeed(props) {
             />
           </Col>
           <Row xs="3">
-            {AllPost.map((post) => (
-              <div>
-                <Card key={post._id}>
+            {AllPost.map((post, i) => (
+              <div key={i}>
+                <Card>
                   <Row className="delete_button">
                     <Col>
                       <Button
@@ -128,7 +129,7 @@ function Newsfeed(props) {
                   <CardBody className="grid-child-posts">
                     <CardTitle>
                       <CardText className="card__name">
-                        <p>{post.userId.username}</p>
+                        <span>{post.userId.username}</span>
                       </CardText>
                     </CardTitle>
                     <CardTitle>
@@ -145,7 +146,7 @@ function Newsfeed(props) {
                     </CardTitle>
                     <Row>
                       <Col>
-                        <ul class="social-icons">
+                        <ul className="social-icons">
                           <li>
                             <a href="#">
                               <i className="fa fa-instagram">
