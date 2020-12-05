@@ -28,7 +28,7 @@ const Navigation = () => {
     <div>
       <Navbar className="navbar" light expand="md">
         <NavbarBrand href="/">
-          <img src={Logo} />
+          <img src={Logo} alt="StudyBuddy Logo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

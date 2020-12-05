@@ -8,7 +8,6 @@ import NoMatch from "./pages/NoMatch";
 import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
-import { Container } from "reactstrap";
 import UserContext from "./utils/UserContext";
 
 const App = () => {
@@ -25,10 +24,10 @@ const App = () => {
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
   const [loading, setLoading] = useState(false);
- 
+
   useEffect(() => {
     isLoggedIn();
-  }, []);
+  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -165,25 +164,21 @@ const App = () => {
   return (
     <UserContext.Provider value={contextValue}>
       <Router>
-        <div>
+        <div id="bodyHeight">
           <TopNav />
-            <Switch>
-              <Route exact path="/" component={Newsfeed} />
-              <Route
-                exact
-                path="/login"
-                render={() => <Auth action="login" />}
-              />
-              <Route
-                exact
-                path="/signup"
-                render={() => <Auth action="signup" />}
-              />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/newsfeed" component={Newsfeed} />
-              <Route exact path="/post/:id" component={Message} />
-              <Route render={NoMatch} />
-            </Switch>
+          <Switch>
+            <Route exact path="/" component={Newsfeed} />
+            <Route exact path="/login" render={() => <Auth action="login" />} />
+            <Route
+              exact
+              path="/signup"
+              render={() => <Auth action="signup" />}
+            />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/newsfeed" component={Newsfeed} />
+            <Route exact path="/post/:id" component={Message} />
+            <Route render={NoMatch} />
+          </Switch>
           <Footer />
         </div>
       </Router>

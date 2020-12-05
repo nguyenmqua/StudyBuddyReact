@@ -8,13 +8,11 @@ import {
   Col,
   Card,
   Button,
-  CardHeader,
   CardFooter,
   CardBody,
   CardTitle,
   CardText,
   CardImg,
-  CardGroup,
 } from "reactstrap";
 import UserContext from "../utils/UserContext";
 import MotiveQuote from "../components/MotiveQuote";
@@ -113,6 +111,7 @@ function Newsfeed(props) {
                     width="215px"
                     justify-content="center"
                     align-items="center"
+                    alt="profile pic"
                   ></img>
                   <CardBody className="grid-child-posts">
                     <CardTitle>
@@ -136,28 +135,48 @@ function Newsfeed(props) {
                       <Col>
                         <ul className="social-icons">
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://www.instagram.com/"
+                              title="link to Instagram"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-instagram">
                                 <FaInstagram />
                               </i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://twitter.com/"
+                              title="link to Twitter"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-twitter">
                                 <FaTwitter />
                               </i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://www.linkedin.com/"
+                              title="link to LinkedIn"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-linkedin">
                                 <FaLinkedinIn />
                               </i>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a
+                              href="https://github.com/"
+                              title="link to Github"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <i className="fa fa-github">
                                 <FaGithub />
                               </i>
