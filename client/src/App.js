@@ -204,7 +204,6 @@ const App = () => {
       <Router>
         <div id="bodyHeight">
           <TopNav />
-          <Container>
             <Switch>
               <Route exact path="/" component={Newsfeed} />
               <Route
@@ -232,7 +231,7 @@ const App = () => {
               <Route exact path="/post/:id" component={Message} />
               <Route render={NoMatch} />
             </Switch>
-          </Container>
+          <Footer />
         </div>
       </Router>
     </UserContext.Provider>
