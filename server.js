@@ -47,11 +47,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/studybuddy', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-<<<<<<< HEAD
   useFindAndModify: false
-=======
-  useFindAndModify: false,
->>>>>>> ed8e23a3838c1bb7ebaded3905b66647bf5513cc
 });
 
 
