@@ -46,7 +46,10 @@ const usersSchema = new Schema({
     type: Schema.Types.ObjectId,    
     ref: "Post"
   }
-  ]
+  ],
+  Image: {
+    type: String,
+  },
 });
 
 usersSchema.methods.generateHash = (password) => {

@@ -13,15 +13,13 @@ import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
 import API from "../../utils/API";
 
-// import userData from "../../utils/UserContext";
-// import { sendMail } from "../../../../controllers/nodemailerController";
-
 const Signup = () => {
   const {
     userData,
     handleInputChange,
-    handleSignup,
     failureMessage,
+    setImageSelected,
+    uploadImage,
   } = useContext(UserContext);
   const [validFirstName, setValidFirstName] = useState(false);
   const [validLastName, setValidLastName] = useState(false);
@@ -31,34 +29,15 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
-  const [imageSelected, setImageSelected] = useState("");
-  const [image, setImage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("")
+
+  
+
+ 
 
   useEffect(() => {
     console.log(errorMessage);
-  }, []);
-
-  const uploadImage = async (e) => {
-    const files = e.target.files
-    const data = new FormData()
-    data.append('file', imageSelected)
-    data.append('upload_preset', 'gsthrmj6')
-    setLoading(true)
-    const res = await fetch(
-      'https://api.cloudinary.com/v1_1/studybuddycloud/image/upload',
-      {
-        method: 'POST',
-        body: data
-      }
-    )
-    const file = await res.json()
-
-    setImage(file.secure_url)
-    setLoading(false)
-      console.log(file.secure_url);
-      handleSignup()
-    }
+  }, [errorMessage]);
 
   const handleConfirmPassword = (event) => {
     const { value } = event.target;
@@ -184,6 +163,8 @@ const Signup = () => {
     }
   }
 
+  
+
   return (
     <div>
       <h2 className="loginTitle">Signup</h2>
@@ -283,9 +264,9 @@ const Signup = () => {
             onChange={(event) => {
               setImageSelected(event.target.files[0]);
             }}
-            />
-             {/* <button onClick ={uploadImage}>Upload Image</button> */}
+          />
         </FormGroup>
+
         {/* if all fields are valid, allow the user to submit the form */}
         {validFirstName &&
         validLastName &&
