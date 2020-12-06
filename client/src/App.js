@@ -9,6 +9,13 @@ import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import UserContext from "./utils/UserContext";
+import SendReset from "./components/Forgot/sendReset"
+import resetPass from "./components/Forgot/resetForm";
+import withAuth from "./components/withAuth/withAuth";
+
+
+
+
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -95,7 +102,7 @@ const App = () => {
                 console.log(user.data);
                 setFailureMessage(user.data);
               }
-            }
+            } 
           })
           .catch((error) => {
             console.log(error);
@@ -174,6 +181,9 @@ const App = () => {
     }
   };
 
+  
+  
+
   const contextValue = {
     userData,
     loggedIn,
@@ -194,19 +204,33 @@ const App = () => {
       <Router>
         <div id="bodyHeight">
           <TopNav />
-          <Switch>
-            <Route exact path="/" component={Newsfeed} />
-            <Route exact path="/login" render={() => <Auth action="login" />} />
-            <Route
-              exact
-              path="/signup"
-              render={() => <Auth action="signup" />}
-            />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/newsfeed" component={Newsfeed} />
-            <Route exact path="/post/:id" component={Message} />
-            <Route render={NoMatch} />
-          </Switch>
+            <Switch>
+              <Route exact path="/" component={Newsfeed} />
+              <Route
+                exact
+                path="/login"
+                render={() => <Auth action="login" />}
+              />
+              <Route
+                
+                path="/reset"
+                component = {withAuth(resetPass)}
+              />
+              <Route
+                exact
+                path="/pass"
+                component = {SendReset}
+              />
+              <Route
+                exact
+                path="/signup"
+                render={() => <Auth action="signup" />}
+              />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/newsfeed" component={Newsfeed} />
+              <Route exact path="/post/:id" component={Message} />
+              <Route render={NoMatch} />
+            </Switch>
           <Footer />
         </div>
       </Router>

@@ -11,6 +11,9 @@ const passport = require('passport');
 const logger = require('morgan');
 const routes = require('./routes');
 
+
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger('dev'));
@@ -37,13 +40,22 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(routes);
 
+
+
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/studybuddy', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+<<<<<<< HEAD
   useFindAndModify: false
+=======
+  useFindAndModify: false,
+>>>>>>> ed8e23a3838c1bb7ebaded3905b66647bf5513cc
 });
+
+
+mongoose.set('useFindAndModify', false);
 
 
 // Start the API server
