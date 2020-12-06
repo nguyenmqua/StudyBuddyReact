@@ -10,7 +10,7 @@ const SendReset = () => {
   const [email, setEmail] = useState("")
   const handleFormSubmit = (event) => {
       console.log(email)
-    API.sendMail({email:email}).then(res => {
+    API.sendReset({email:email}).then(res => {
         console.log(res)
     })
   }

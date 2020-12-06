@@ -184,15 +184,6 @@ const Signup = () => {
     }
   }
 
-  // const [email, setEmail] = useState("")
-  // const handleFormSubmit = (event) => {
-  //     console.log(email)
-  //   API.sendWelcome({email:email}).then(res => {
-  //       console.log(res)
-  //   })
-  // }
-  
-
   return (
     <div>
       <h2 className="loginTitle">Signup</h2>

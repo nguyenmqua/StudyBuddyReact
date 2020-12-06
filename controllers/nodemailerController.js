@@ -3,26 +3,11 @@ const { addListener } = require("nodemon");
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
 
-// Issue token
-// const payload = { email };
-// const token = jwt.sign(payload, secret, {
-//   expiresIn: "1h",
-// });
-// res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-// console.log(token);
+
 
 module.exports = {
-//   sendJWT: function (req, res) {
-//     const payload = { email };
-//     const token = jwt.sign(payload, secret, {
-//       expiresIn: "1h",
-//     });
-//     res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-//     console.log(token);
 
-    // res.json(jwt({ secret: "shhhhhhared-secret" }));
-//   },
-  sendMail: async function (req, res) {
+  sendReset: async function (req, res) {
     
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",

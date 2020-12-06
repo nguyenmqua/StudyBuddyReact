@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-  sendMail: function (email) {
-    return axios.post('/sendMail', email)
+  sendReset: function (email) {
+    return axios.post('/sendReset', email)
   },
   
   // sendWelcome: function (email) {

@@ -3,8 +3,8 @@ const { get } = require("mongoose");
 const nodemailerController = require("../controllers/nodemailerController");
 const withAuth = require('../config/middleware/middleware');
 
-router.route("/sendMail")
-  .post(nodemailerController.sendMail);
+router.route("/sendReset")
+  .post(nodemailerController.sendReset);
 
   router.route("/checkToken/:token")
        .get(withAuth, nodemailerController.checkToken)

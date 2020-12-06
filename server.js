@@ -10,7 +10,7 @@ const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
 const logger = require('morgan');
 const routes = require('./routes');
-const token = 'mysecretsshhh';
+
 
 
 
