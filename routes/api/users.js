@@ -10,7 +10,7 @@ router.post(
     failureRedirect: '/api/users/unauthorized',
     failureFlash: true,
   }),
-  (req, res, next) => {
+  (req, res) => {
     console.log('sign in successful');
     console.log(req.user)
     res.json({
@@ -19,6 +19,44 @@ router.post(
     });
   },
 );
+
+router.post('/resetPass', (req, res) => {
+
+  console.log(req.body.reset, req.body.email)
+
+  db.User.findOne({email: req.body.email}).then(function (results){
+
+
+    const newUser = new db.User({
+      firstname: results.firstname,
+      lastname: results.lastname,
+      email: results.email,
+      username: results.username,
+      password: results.password
+    });
+    newUser.password = newUser.generateHash(req.body.reset);
+
+    console.log(newUser.password)
+
+      db.User.findOneAndUpdate({email:req.body.email}, {password: newUser.password}, (error, data) => {
+    if(error) {
+      console.log(error)
+    } else {
+      console.log(data)
+      res.json(data)
+    }
+  })
+
+   
+    // newUser.password = newUser.generateHash(req.body.password);
+    // console.log("newUser", newUser)
+    // res.json(newUser.password)
+  
+  })
+
+
+  
+})
 
 router.post('/signup', (req, res, next) => {
   db.User.findOne({ username: req.body.username }, (err, user) => {
@@ -53,6 +91,30 @@ router.post('/signup', (req, res, next) => {
     }
   });
 });
+
+// router.put('/user', (req, res, next) => {
+//   db.User.findOneandUpdate({ id: req.user.id }, (err, user) => {
+//     if (err) throw err;
+//     if (!user) {
+//       console.log('error user');
+//       return res.json('error user');
+//     }
+//     if (user) {
+//       db.User.findOne({email: user.email}, (error, user) => {
+//         if (error) throw error;
+      
+      
+//           user.password = newUser.generateHash(req.body.password);
+//           user.save((error2) => {
+//             if (error2) throw error2;
+//             console.log('user saved!');
+//             res.redirect(307, '/api/users/login');
+//           });
+//         }
+//       });
+//     }
+//   });
+// }); 
 
 router.get('/unauthorized', (req, res, next) => {
   res.json({
