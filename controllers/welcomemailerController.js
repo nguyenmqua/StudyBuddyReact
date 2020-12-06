@@ -14,8 +14,8 @@ module.exports = {
       host: "smtp.gmail.com",
       port: 587,
       auth: {
-        user: process.env.REACT_APP_USER,
-        pass: process.env.REACT_APP_PASS,
+        user: "",
+        pass: "",
       },
     });
 //  const payload = {email: req.body.email};
@@ -41,7 +41,38 @@ module.exports = {
       // HTML body
       html:
         "<p>Hello and welcome to StuddyBuddy!! Login Here!!" +
-        `<p><link>http://localhost:3000/login</p>`,
+        `<p><link>http://localhost:3000/login</p>` +
+        `<br/><img src="cid:nyan@example.com"/>`,
+
+        // An array of attachments
+        attachments: [
+          // String attachment
+          {
+              filename: 'notes.txt',
+              content: 'Some notes about this e-mail',
+              contentType: 'text/plain' // optional, would be detected from the filename
+          },
+
+          // Binary Buffer attachment
+          {
+              filename: 'image.png',
+              content: Buffer.from(
+                  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
+                      '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
+                      'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC',
+                  'base64'
+              ),
+
+              cid: 'logo@studdybuddy.com' // should be as unique as possible
+          },
+
+          // File Stream attachment
+          {
+              filename: 'studdyLogo',
+              path: __dirname + 'StudyBuddyReact/client/public/img/StudyBuddy-Logo-icon.png',
+              cid: 'logo@studdybuddy.com' // should be as unique as possible
+          }
+      ]
     };
 
     let info = await transporter.sendMail(message);

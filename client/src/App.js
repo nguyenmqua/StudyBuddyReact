@@ -113,7 +113,7 @@ const App = () => {
           setLoggedin(true);
           setUser(user.data.user);
         } else {
-          console.log(user.data.message);
+          // console.log(user.data.message);
         }
       });
     }
