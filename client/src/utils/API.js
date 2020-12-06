@@ -48,6 +48,10 @@ export default {
     return axios.get("/api/search/" + data);
   },
 
+  putUsername: function (data){
+    return axios.put("/api/profilePic", data)
+  },
+
   searchSubject: function () {
     return axios.get("/api/search/");
   },
