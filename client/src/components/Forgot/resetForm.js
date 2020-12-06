@@ -18,14 +18,10 @@ function ResetPass() {
   const [reset, setReset] = useState("");
   const [confirmReset, setConfirmReset] = useState("");
 
-  
-  
-  
-
-  const handleConfirmPassword = (event) => {
-    const { value } = event.target;
-    setConfirmPassword(value);
-  };
+  // const handleConfirmPassword = (event) => {
+  //   const { value } = event.target;
+  //   setConfirmPassword(value);
+  // };
   
 
   // checks is password meets regex test (at least 8 letters, 1 capital and 1 number)
@@ -71,13 +67,19 @@ function ResetPass() {
       }
     };
 
+   
+  // console.log(url[2])
+
     const handleResetSubmit = (event) => {
       event.preventDefault();
       console.log(reset, confirmReset);
+       //gets user email from browswer
+  const url = window.location.pathname.split('/');
+  console.log(url[2])
      
       if (reset === confirmReset) {
-        API.reset({reset:confirmReset}).then(res => {
-          console.log(res)
+        API.reset({reset:confirmReset,email: url[2]}).then(res => {
+          console.log("email",res)
       }) 
       } else {
         alert("Passwords do not match!")

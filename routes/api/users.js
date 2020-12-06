@@ -10,7 +10,7 @@ router.post(
     failureRedirect: '/api/users/unauthorized',
     failureFlash: true,
   }),
-  (req, res, next) => {
+  (req, res) => {
     console.log('sign in successful');
     res.json({
       user: req.user,
@@ -21,21 +21,39 @@ router.post(
 
 router.post('/resetPass', (req, res) => {
 
-  const newUser = new db.User({
-    password: req.body.reset
-  });
-  console.log(req.body.reset, req.user)
-  newUser.password = newUser.generateHash(req.body.password);
-  console.log("newUser", newUser)
-  res.json(newUser.password)
+  console.log(req.body.reset, req.body.email)
 
-  // db.User.findOneAndUpdate({email: {}}, {firstname: 'German', password: usersSchema.methods.generateHash('Password2!')}, (error, data) => {
-  //   if(error) {
-  //     console.log(error)
-  //   } else {
-  //     console.log(data)
-  //   }
-  // })
+  db.User.findOne({email: req.body.email}).then(function (results){
+
+
+    const newUser = new db.User({
+      firstname: results.firstname,
+      lastname: results.lastname,
+      email: results.email,
+      username: results.username,
+      password: results.password
+    });
+    newUser.password = newUser.generateHash(req.body.reset);
+
+    console.log(newUser.password)
+
+      db.User.findOneAndUpdate({email:req.body.email}, {password: newUser.password}, (error, data) => {
+    if(error) {
+      console.log(error)
+    } else {
+      console.log(data)
+      res.json(data)
+    }
+  })
+
+   
+    // newUser.password = newUser.generateHash(req.body.password);
+    // console.log("newUser", newUser)
+    // res.json(newUser.password)
+  
+  })
+
+
   
 })
 
