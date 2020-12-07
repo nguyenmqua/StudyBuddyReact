@@ -5,7 +5,7 @@ const Search = ({ submitSearch, subjects, search, handleInputChange }) => {
   return (
     <form className="search">
       <div className="form-group">
-        <label htmlFor="search"></label>
+        <label htmlFor="search">Search Subject</label>
         <input
           className="form-control"
           type="text"
@@ -23,7 +23,7 @@ const Search = ({ submitSearch, subjects, search, handleInputChange }) => {
             </option>
           ))}
         </datalist>
-      <Button id="Submit_Button" onClick={submitSearch}> Submit</Button>
+      <Button onClick={submitSearch}> Submit</Button>
       </div>
     </form>
   );
