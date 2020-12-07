@@ -4,10 +4,6 @@ export default {
   sendReset: function (email) {
     return axios.post('/sendReset', email)
   },
-  
-  // sendWelcome: function (email) {
-  //   return axios.post('/sendWelcome', email)
-  // },
 
   reset: function (data) {
     console.log(data)
