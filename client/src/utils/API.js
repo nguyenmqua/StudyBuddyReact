@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   sendReset: function (email) {
-    return axios.post('/sendReset', email)
+    return axios.post('api/sendReset', email)
   },
   
   // sendWelcome: function (email) {
