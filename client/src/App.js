@@ -24,8 +24,7 @@ const App = () => {
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
   const [loading,setLoading] = useState(false);
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState('');
+ 
   useEffect(() => {
     isLoggedIn();
   }, []);
@@ -129,28 +128,7 @@ const App = () => {
     );
     const file = await res.json();
     handleSignup(file.secure_url);
-      console.log(userData.email)
-    await setEmail(userData.email)
-    
-
-  
-    console.log({ email, message });
-    const response = await fetch("api/sendMail", { 
-      method: 'POST', 
-      headers: { 
-          'Content-type': 'application/json'
-      }, 
-      body: JSON.stringify({email: userData.email}) 
-  }); 
-    const resData = await response.json(); 
-    if (resData.status === 'success'){
-      alert("Message Sent."); 
-      this.resetForm()
-  }else if(resData.status === 'fail'){
-      alert("Message failed to send.")
-  }
-};
-
+  };
 
   // const setUpProfilePic = (image) => {
   //   API.postProfilePic({profilePic: image})
