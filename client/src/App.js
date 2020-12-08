@@ -9,13 +9,6 @@ import Message from "./pages/Message";
 import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import UserContext from "./utils/UserContext";
-import SendReset from "./components/Forgot/sendReset"
-import resetPass from "./components/Forgot/resetForm";
-import withAuth from "./components/withAuth/withAuth";
-
-
-
-
 
 const App = () => {
   const [userData, setUserData] = useState({
@@ -30,16 +23,12 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [failureMessage, setFailureMessage] = useState(null);
   const [imageSelected, setImageSelected] = useState("");
-
-  const [loading, setLoading] = useState(false);
+  const [loading,setLoading] = useState(false);
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState('');
-
- 
-
   useEffect(() => {
     isLoggedIn();
-  });
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -102,7 +91,7 @@ const App = () => {
                 console.log(user.data);
                 setFailureMessage(user.data);
               }
-            } 
+            }
           })
           .catch((error) => {
             console.log(error);
@@ -125,7 +114,7 @@ const App = () => {
       });
     }
   };
-  
+
   const uploadImage = async (e) => {
     const data = new FormData();
     data.append("file", imageSelected);
@@ -146,7 +135,7 @@ const App = () => {
 
   
     console.log({ email, message });
-    const response = await fetch("/mail/sendMail", { 
+    const response = await fetch("api/sendMail", { 
       method: 'POST', 
       headers: { 
           'Content-type': 'application/json'
@@ -160,7 +149,8 @@ const App = () => {
   }else if(resData.status === 'fail'){
       alert("Message failed to send.")
   }
-  };
+};
+
 
   // const setUpProfilePic = (image) => {
   //   API.postProfilePic({profilePic: image})
@@ -181,9 +171,6 @@ const App = () => {
     }
   };
 
-  
-  
-
   const contextValue = {
     userData,
     loggedIn,
@@ -196,13 +183,10 @@ const App = () => {
     setImageSelected,
     uploadImage,
   };
-
-
-  
   return (
     <UserContext.Provider value={contextValue}>
       <Router>
-        <div id="bodyHeight">
+        <div>
           <TopNav />
             <Switch>
               <Route exact path="/" component={Newsfeed} />
@@ -210,16 +194,6 @@ const App = () => {
                 exact
                 path="/login"
                 render={() => <Auth action="login" />}
-              />
-              <Route
-                
-                path="/reset"
-                component = {withAuth(resetPass)}
-              />
-              <Route
-                exact
-                path="/pass"
-                component = {SendReset}
               />
               <Route
                 exact
