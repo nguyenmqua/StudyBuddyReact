@@ -1,8 +1,8 @@
 const router = require("express").Router("")
 const { get } = require("mongoose");
-const welcomemailerController = require("../../controllers/welcomemailerController");
+const welcomemailerController = require("../controllers/welcomemailerController");
 
-router.route("/")
+router.route("/sendMail")
   .post(welcomemailerController.sendMail);
 
 

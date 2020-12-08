@@ -92,6 +92,19 @@ const App = () => {
               }
             }
           })
+          .then(
+            fetch("/mail/sendMail", { 
+            method: 'POST', 
+            headers: { 
+                'Content-type': 'application/json'
+            }, 
+            body: JSON.stringify({email: userData.email}) 
+          })).then(resData=>{if (resData.status === 'success'){
+            alert("Message Sent."); 
+            this.resetForm()
+        }else if(resData.status === 'fail'){
+            alert("Message failed to send.")
+        } })
           .catch((error) => {
             console.log(error);
           });

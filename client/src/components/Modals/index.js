@@ -6,7 +6,7 @@ const ModalExample = (props) => {
     const [modal, setModal] = useState(false);
     const [option, setOption] = useState("");
     const [username, setUsername] = useState("")
-    const {user} = useContext()
+    const {user} = useContext(UserContext)
 
     const toggleModal = () => setModal(!modal);
 
