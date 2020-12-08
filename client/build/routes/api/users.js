@@ -12,7 +12,6 @@ router.post(
   }),
   (req, res, next) => {
     console.log('sign in successful');
-    console.log(req.user)
     res.json({
       user: req.user,
       loggedIn: true,
@@ -40,7 +39,6 @@ router.post('/signup', (req, res, next) => {
             email: req.body.email,
             username: req.body.username,
             password: req.body.password,
-            Image: req.body.Image
           });
           newUser.password = newUser.generateHash(req.body.password);
           newUser.save((error2) => {
@@ -67,8 +65,6 @@ router.get('/profile', authMiddleware.isLoggedIn, (req, res, next) => {
     loggedIn: true,
   });
 });
-
-
 
 router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
   res.json('User logged out successfully');

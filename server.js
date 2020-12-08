@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 // const colors = require('colors');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
@@ -10,9 +10,6 @@ const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
 const logger = require('morgan');
 const routes = require('./routes');
-
-
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -40,18 +37,12 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(routes);
 
-
-
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/studybuddy', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-  useFindAndModify: false,
 });
-
-
-mongoose.set('useFindAndModify', false);
 
 
 // Start the API server

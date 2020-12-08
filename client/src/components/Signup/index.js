@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-
 import {
   Button,
   Form,
@@ -11,7 +10,6 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
-import API from "../../utils/API";
 
 const Signup = () => {
   const {
@@ -29,15 +27,10 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
-  const [email, setEmail] = useState("")
-
-  
-
- 
 
   useEffect(() => {
     console.log(errorMessage);
-  }, [errorMessage]);
+  }, []);
 
   const handleConfirmPassword = (event) => {
     const { value } = event.target;
@@ -144,7 +137,6 @@ const Signup = () => {
 
   // checks if 2 password fields match
   const checkConfirmPassword = () => {
-    
     if (confirmPassword.length === 0) {
       setIsConfirmed(false);
       setErrorMessage({ ...errorMessage, confirmPassword: "" });
@@ -161,16 +153,14 @@ const Signup = () => {
         confirmPassword: "Passwords must match",
       });
     }
-  }
-
-  
+  };
 
   return (
     <div>
       <h2 className="loginTitle">Signup</h2>
       <hr />
       {failureMessage ? <Alert type="danger">{failureMessage}</Alert> : <p></p>}
-      <Form >
+      <Form>
         <FormGroup>
           <Label for="firstname">First Name</Label>
           <Input
@@ -287,7 +277,7 @@ const Signup = () => {
         </p>
       </Form>
     </div>
-  )}
-
+  );
+};
 
 export default Signup;

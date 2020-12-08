@@ -22,8 +22,9 @@ import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-
 import Highlighter from "react-highlight-words";
+import Modal from "../components/Modals"
+
 
 function Newsfeed(props) {
   const { loggedIn } = useContext(UserContext);
@@ -67,34 +68,34 @@ function Newsfeed(props) {
     <Container>
       <Row>
         {!loggedIn ? (
-          <Col>
+          <Col >
             <h1 className="TypographyHeader">Welcome to Study Buddy!</h1>
-
+            
             <p id="TypographyPara">
               Study Buddy is designed to help you connect with fellow students
               or like minded folks who would like to study the same subject
-              together.
-              <br />
-              <br />
+              together. 
+              <br/>
               <Highlighter
                 highlightClassName="LoginParagraph"
-                searchWords={["Login", "Choose a Subject", "Choose to Connect"]}
+                searchWords={[ "Login","Choose a Subject", "Choose to Connect"]}
                 autoEscape={true}
                 textToHighlight="Login, Choose a Subject, Choose to Connect Virtually or
                 in Person and Choose how many people you'd like to study with. You
-                can see who's studying the same subject and connect with them."
-              />
+                can see who's studying the same subject and connect with them."/>
             </p>
-            <br />
           </Col>
         ) : (
           ""
         )}
       </Row>
       {loggedIn ? (
+        <>
         <Row>
+
           <MotiveQuote /> 
           <Row>
+
             <Search
               setSearch={setSearch}
               submitSearch={submitSearch}
@@ -102,7 +103,9 @@ function Newsfeed(props) {
               subjects={subjects}
               handleInputChange={handleInputChange}
             />
+
           </Row>
+
           <Row xs="3">
             {AllPost.map((post, i) => (
               <div key={i}>
@@ -218,6 +221,7 @@ function Newsfeed(props) {
             ))}
           </Row>
         </Row>
+      </>
       ) : (
         <Row>
           <Col>
