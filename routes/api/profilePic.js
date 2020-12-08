@@ -2,7 +2,6 @@ const router = require("express").Router();
 const profilePicController = require("../../controllers/profilePicController");
 
 router.route("/")
-  .post(profilePicController.create)
-  .put(profilePicController.put)
+  .post(profilePicController.create);
 
 module.exports = router;
