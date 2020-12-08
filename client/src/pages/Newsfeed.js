@@ -92,8 +92,10 @@ function Newsfeed(props) {
       {loggedIn ? (
         <>
         <Row>
-          <Col xs="auto">
-            <MotiveQuote />
+
+          <MotiveQuote /> 
+          <Row>
+
             <Search
               setSearch={setSearch}
               submitSearch={submitSearch}
@@ -101,7 +103,9 @@ function Newsfeed(props) {
               subjects={subjects}
               handleInputChange={handleInputChange}
             />
-          </Col>
+
+          </Row>
+
           <Row xs="3">
             {AllPost.map((post, i) => (
               <div key={i}>
