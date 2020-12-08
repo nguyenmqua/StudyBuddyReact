@@ -4,10 +4,6 @@ export default {
   sendReset: function (email) {
     return axios.post('/sendReset', email)
   },
-  
-  // sendWelcome: function (email) {
-  //   return axios.post('/sendWelcome', email)
-  // },
 
   reset: function (data) {
     console.log(data)
@@ -21,11 +17,6 @@ export default {
   signup: function (signupInfo) {
     return axios.post("/api/users/signup", signupInfo);
   },
-
-  sendMail: function (email) {
-    return axios.post('/sendMail', email)
-  },
-  
 
   isLoggedIn: function () {
     return axios.get("/api/users/profile");
@@ -64,6 +55,10 @@ export default {
 
   getSearch: function (data) {
     return axios.get("/api/search/" + data);
+  },
+
+  putUsername: function (data){
+    return axios.put("/api/profilePic", data)
   },
 
   searchSubject: function () {

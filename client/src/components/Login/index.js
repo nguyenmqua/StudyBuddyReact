@@ -41,9 +41,6 @@ const Login = () => {
             <p className="signupLink">
               <Link to="/signup">Don't have an account? Sign up here</Link>
             </p>
-            <p className="resetLink">
-          <Link to="/pass">Forgot password?</Link>
-        </p>
           </Form>
         </Col>
       </Row>

@@ -29,8 +29,6 @@ const usersSchema = new Schema({
     unique: false,
     required: true,
   },
-  resetToken: String,
-  expireToken: Date,
   admin: {
     type: Boolean,
     unique: false,
@@ -61,14 +59,5 @@ usersSchema.methods.validPassword = (password, encrypted) => {
 };
 
 const Users = mongoose.model('Users', usersSchema);
-mongoose.set('useFindAndModify', false);
-
-// Users.findOneAndUpdate({email: {}}, {firstname: 'German', password: usersSchema.methods.generateHash('Password2!')}, (error, data) => {
-//   if(error) {
-//     console.log(error)
-//   } else {
-//     console.log(data)
-//   }
-// })
 
 module.exports = Users;
