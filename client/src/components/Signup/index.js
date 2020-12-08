@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import {
+  Row,
+  Col,
   Button,
   Form,
   FormGroup,
@@ -27,10 +29,11 @@ const Signup = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState({});
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     console.log(errorMessage);
-  }, []);
+  }, [errorMessage]);
 
   const handleConfirmPassword = (event) => {
     const { value } = event.target;
@@ -73,7 +76,6 @@ const Signup = () => {
     }
   };
 
-  // uses regex to check is email is valid
   const checkEmail = () => {
     const validEmail = new RegExp(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -94,7 +96,6 @@ const Signup = () => {
       setErrorMessage({ ...errorMessage, email: "" });
     }
   };
-
   // make sure username is at least 5 characters
   const checkUsername = () => {
     const length = userData.username.length;
@@ -160,122 +161,126 @@ const Signup = () => {
       <h2 className="loginTitle">Signup</h2>
       <hr />
       {failureMessage ? <Alert type="danger">{failureMessage}</Alert> : <p></p>}
-      <Form>
-        <FormGroup>
-          <Label for="firstname">First Name</Label>
-          <Input
-            type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="firstname"
-            value={userData.firstname}
-            onChange={handleInputChange}
-            onBlur={checkFirstname}
-            valid={validFirstName}
-          />
-          <FormText>{errorMessage["firstname"]}</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="lastname">Last Name</Label>
-          <Input
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="lastname"
-            value={userData.lastname}
-            onChange={handleInputChange}
-            onBlur={checkLastname}
-            valid={validLastName}
-          />
-          <FormText>{errorMessage["lastname"]}</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email@email.com"
-            value={userData.email}
-            onChange={handleInputChange}
-            onBlur={checkEmail}
-            valid={validEmail}
-          />
-          <FormText>{errorMessage["email"]}</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="username">Username</Label>
-          <Input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="username"
-            value={userData.username}
-            onChange={handleInputChange}
-            onBlur={checkUsername}
-            valid={validUserName}
-          />
-          <FormText>{errorMessage["username"]}</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            value={userData.password}
-            onChange={handleInputChange}
-            onBlur={checkPassword}
-            valid={validPassword}
-          />
-          <FormText>{errorMessage["password"]}</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="confirmPassword">Confirm Password</Label>
-          <Input
-            type="password"
-            name="password"
-            id="confirmPassword"
-            placeholder="confirm password"
-            value={confirmPassword}
-            onChange={handleConfirmPassword}
-            onKeyUp={checkConfirmPassword}
-            valid={isConfirmed}
-          />
-          <FormText>{errorMessage["confirmPassword"]}</FormText>
-        </FormGroup>
-        <FormGroup>
-          <Label for="image">Profile Image</Label>
-          <Input
-            type="file"
-            name="file"
-            placeholder="profile image"
-            onChange={(event) => {
-              setImageSelected(event.target.files[0]);
-            }}
-          />
-        </FormGroup>
-
-        {/* if all fields are valid, allow the user to submit the form */}
-        {validFirstName &&
-        validLastName &&
-        validEmail &&
-        validUserName &&
-        validPassword &&
-        isConfirmed ? (
-          <Button onClick={uploadImage} color="success" block>
-            Signup
-          </Button>
-        ) : (
-          <Button onClick={uploadImage} color="danger" block disabled>
-            Signup
-          </Button>
-        )}
-        <p className="signupLink">
-          <Link to="/login">Already have an account? Sign in here</Link>
-        </p>
-      </Form>
+      <Row>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Form>
+            <FormGroup>
+              <Label for="firstname">First Name</Label>
+              <Input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="firstname"
+                value={userData.firstname}
+                onChange={handleInputChange}
+                onBlur={checkFirstname}
+                valid={validFirstName}
+              />
+              <FormText>{errorMessage["firstname"]}</FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label for="lastname">Last Name</Label>
+              <Input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="lastname"
+                value={userData.lastname}
+                onChange={handleInputChange}
+                onBlur={checkLastname}
+                valid={validLastName}
+              />
+              <FormText>{errorMessage["lastname"]}</FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label for="email">Email</Label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email@email.com"
+                value={userData.email}
+                onChange={handleInputChange}
+                onBlur={checkEmail}
+                valid={validEmail}
+              />
+              <FormText>{errorMessage["email"]}</FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label for="username">Username</Label>
+              <Input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+                value={userData.username}
+                onChange={handleInputChange}
+                onBlur={checkUsername}
+                valid={validUserName}
+              />
+              <FormText>{errorMessage["username"]}</FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+                value={userData.password}
+                onChange={handleInputChange}
+                onBlur={checkPassword}
+                valid={validPassword}
+              />
+              <FormText>{errorMessage["password"]}</FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label for="confirmPassword">Confirm Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="confirmPassword"
+                placeholder="confirm password"
+                value={confirmPassword}
+                onChange={handleConfirmPassword}
+                onKeyUp={checkConfirmPassword}
+                valid={isConfirmed}
+              />
+              <FormText>{errorMessage["confirmPassword"]}</FormText>
+            </FormGroup>
+            <FormGroup>
+              <Label for="image">Profile Image</Label>
+              <Input
+                type="file"
+                name="file"
+                placeholder="profile image"
+                onChange={(event) => {
+                  setImageSelected(event.target.files[0]);
+                }}
+              />
+            </FormGroup>
+​
+            {/* if all fields are valid, allow the user to submit the form */}
+            {validFirstName &&
+            validLastName &&
+            validEmail &&
+            validUserName &&
+            validPassword &&
+            isConfirmed ? (
+              <Button onClick={uploadImage} color="success" block>
+                Signup
+              </Button>
+            ) : (
+              <Button onClick={uploadImage} color="danger" block disabled>
+                Signup
+              </Button>
+            )}
+            <p className="signupLink">
+              <Link to="/login">Already have an account? Sign in here</Link>
+            </p>
+          </Form>
+        </Col>
+      </Row>
     </div>
   );
 };
