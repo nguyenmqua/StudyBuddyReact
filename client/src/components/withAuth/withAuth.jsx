@@ -19,7 +19,7 @@ export default function withAuth(ComponentToProtect) {
 
         const email = url[url.length - 2]
         console.log(email)
-      fetch('/checkToken/' + token)
+      fetch('mail/checkToken/' + token)
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });

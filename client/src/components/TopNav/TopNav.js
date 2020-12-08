@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../../utils/UserContext";
 import Logo from "../../assets/img/StudyBuddy-Logo-md.png";
-import Modal from "../Modals"
+
 import {
   Collapse,
   Navbar,
@@ -28,7 +28,8 @@ const Navigation = () => {
     <div>
       <Navbar className="navbar" light expand="md">
         <NavbarBrand href="/">
-          <img alt="logo" src={Logo} />
+
+          <img src={Logo} alt="StudyBuddy Logo" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -37,15 +38,9 @@ const Navigation = () => {
               <NavLink href="/">Home</NavLink>
             </NavItem>
             {loggedIn ? (
-              <>
             <NavItem>
               <NavLink href="/profile">Request Buddy</NavLink>
-            </NavItem>
-            <NavItem>
-              <Modal />
-            </NavItem>
-            </>
-            ):(<></>)}
+            </NavItem>):(<></>)}
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 <i className="fas fa-user-secret"></i>

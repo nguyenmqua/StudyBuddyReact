@@ -7,7 +7,7 @@ router.route("/sendReset")
   .post(nodemailerController.sendReset);
 
   router.route("/checkToken/:token")
-       .get(withAuth, nodemailerController.checkToken)
+      .get(withAuth, nodemailerController.checkToken)
 
 
 // router.route("/protected").get(nodemailerController.sendJWT);
